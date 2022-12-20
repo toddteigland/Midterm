@@ -7,4 +7,14 @@ const getUsers = () => {
     });
 };
 
+const getVehicles = () => {
+  return db.query('SELECT * FROM vehicles;')
+    .then(data => {
+      return data.rows;
+    });
+};
+
+
+
+
 module.exports = { getUsers };
