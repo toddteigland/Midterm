@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Search Results</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/search.js"></script>
+</head>
+
+<body>
+
+  <form method="get" action="/search">
+    <div>
+      <label for="search-vehicle-make">Make</label>
+      <input type="text" name="search-vehicle-make" placeholder="Make">
+    </div>
+    <div>
+      <label for="search-vehicle-model">Model</label>
+      <input type="text" name="search-vehicle-model" placeholder="Model">
+    </div>
+    <div>
+      <label for="search-vehicle-min-year">Min Year</label>
+      <input type="text" name="search-vehicle-min-year" placeholder="Min Year">
+      <label for="search-vehicle-max-year">Max Year</label>
+      <input type="text" name="search-vehicle-max-year" placeholder="Max Year">
+    </div>
+    <div>
+      <label for="search-vehicle-min-price">Min Price</label>
+      <input type="text" name="search-vehicle-min-price" placeholder="Min Price">
+      <label for="search-vehicle-max-price">Max Price</label>
+      <input type="text" name="search-vehicle-max-price" placeholder="Max Price">
+    </div>
+    <div>
+      <button type="submit" id="search-button">Search</button>
+    </div>
+    <section>
+      <ul id="vehicles">
+      </ul>
+    </section>
+  </form>
+
+</body>
+
+</html>
