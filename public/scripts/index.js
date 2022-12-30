@@ -16,7 +16,8 @@ $(() => {
           <p> ${vehicle.yr} </p>
           <p> ${vehicle.make} <b>${vehicle.model}</b></p>
           <p> $${vehicle.price} </p>
-          <p> # of LIKES = ${vehicle.likes}`
+          <p> # of LIKES = ${vehicle.likes}</p>
+          <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>`
         ).appendTo($vehicleList);
       }
     });
