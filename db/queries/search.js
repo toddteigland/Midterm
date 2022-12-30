@@ -1,6 +1,7 @@
 const db = require('../connection');
 
-const getVehicles = (options) => {
+
+const getVehicles = function() {
 
   const queryParams = [];
 
@@ -9,41 +10,41 @@ const getVehicles = (options) => {
   FROM vehicles
   `;
 
-  if (options) {
-    queryParams.push(options);
+  if ('search-vehicle-make') {
+    queryParams.push('search-vehicle-make');
     queryString += `WHERE make = $${queryParams.length}`;
   };
 
-  if (options.model) {
-    queryParams.push(`%${options.model}%`);
+  if ('search-vehicle-model') {
+    queryParams.push('search-vehicle-model');
     queryString += ` WHERE model = $${queryParams.length}`;
   };
-  if (options.price) {
-    queryParams.push(options.price);
+  if ('search-vehicle-min-price') {
+    queryParams.push('search-vehicle-min-price');
     if (queryParams.length === 1) {
       queryString += ` WHERE price >= $${queryParams.length}`;
     } else {
     queryString += ` AND price >= $${queryParams.length}`;
     }
   };
-  if (options.price) {
-    queryParams.push(options.price);
+  if ('search-vehicle-max-price') {
+    queryParams.push('search-vehicle-max-price');
     if (queryParams.length === 1) {
     queryString += ` WHERE price <= $${queryParams.length}`;
     } else {
     queryString += ` AND price <= $${queryParams.length}`;
     }
   };
-  if (options.yr) {
-    queryParams.push(options.yr);
+  if ('search-vehicle-min-year') {
+    queryParams.push('search-vehicle-min-year');
     if (queryParams.length === 1) {
       queryString += ` WHERE yr >= $${queryParams.length}`;
     } else {
     queryString += ` AND yr >= $${queryParams.length}`;
     }
   };
-  if (options.yr) {
-    queryParams.push(options.yr);
+  if ('search-vehicle-max-year') {
+    queryParams.push('search-vehicle-max-year');
     if (queryParams.length === 1) {
       queryString += ` WHERE yr <= $${queryParams.length}`;
     } else {
@@ -56,15 +57,17 @@ const getVehicles = (options) => {
   LIMIT 10;
   `;
 
- console.log('QUERY STRING FROM GETVEHICLES FUNCTION: ', queryString)
+ console.log('QUERY STRING: ', queryString)
+ console.log('QUERY PARAMS: ', queryParams)
 
   return db.query(queryString, queryParams)
   .then((response) => {
+    console.log('RESPONSE.ROWS: ', response.rows)
     return response.rows
   });
 };
 
 module.exports = {
-  getVehicles,
+  getVehicles
 }
 
