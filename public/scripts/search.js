@@ -1,7 +1,8 @@
 //Onclick loops through vehicles in response object
 $(() => {
-  $('#search-button').on('submit', (event) => {
-    // event.preventDefault();
+  $('#search-form').on('submit', (event) => {
+    event.preventDefault();
+    data = $(this).serialize();
     $.ajax({
       method: 'GET',
       url: '/api/vehicles'
