@@ -30,7 +30,7 @@ app.use(express.static('public'));
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
-const vehicleApiRoutes = require('./routes/search-api');
+const vehicleApiRoutes = require('./routes/vehicle-api');
 const indexApiRoutes = require('./routes/index-api')
 const usersRoutes = require('./routes/users');
 const searchRoutes = require('./routes/search');

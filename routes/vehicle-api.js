@@ -17,4 +17,17 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/filter', (req, res) => {
+  searchQueries.filterVehicles(req.body)
+    .then(vehicles => {
+      res.json({ vehicles });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+  console.log('REQ DOT BODY: ',req.body);
+})
+
 module.exports = router;
