@@ -19,23 +19,32 @@
 
 <body>
   <section>
-    <!-- This will be for a filter, using text input form -->
+    <form id="filter-form">
+      <label>Filter Results</label>
+      <div>
+        <label for="make">Make</label>
+        <input type="text" name="make" class="make" placeholder="Make">
+      </div>
+      <div>
+        <label for="model">Model</label>
+        <input type="text" name="model" class="model" placeholder="Model">
+      </div>
+      <div>
+        <select name="sort" id="sort" placeholder="Sort-by">
+          <option value="" disabled selected>Sort-by</option>
+          <option value="likes">Number of likes</option>
+          <option value="price-asc">Price Ascending</option>
+          <option value="price-desc">Price Descending</option>
+          <option value="year-asc">Year Ascending</option>
+          <option value="year-desc">Year Descending</option>
+        </select>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
   </section>
 
   <section>
-    <!-- <label for="sort" placeholder="sort-by">Sort by:</label> -->
-    <select name="sort" id="sort" placeholder="Sort-by">
-      <option value="" disabled selected>Sort-by</option>
-      <option value="likes">Number of likes</option>
-      <option value="price-asc">Price Ascending</option>
-      <option value="price-desc">Price Descending</option>
-      <option value="year-asc">Year Ascending</option>
-      <option value="year-desc">Year Descending</option>
-    </select>
-  </section>
-  
-  <section>
-    <ul id="most-liked">
+    <ul id="vehicleList">
     </ul>
   </section>
 </body>
