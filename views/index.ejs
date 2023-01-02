@@ -4,9 +4,9 @@
 <head>
   <title>Home Page</title>
 
-  <meta charset="UTF-8" >
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -18,6 +18,21 @@
 </head>
 
 <body>
+  <section>
+    <!-- This will be for a filter, using text input form -->
+  </section>
+
+  <section>
+    <label for="sort">Sort by:</label>
+    <select name="sort" id="sort">
+      <option value="num-likes">Number of likes</option>
+      <option value="price-asc">Price Ascending</option>
+      <option value="price-desc">Price Descending</option>
+      <option value="year-asc">Year Ascending</option>
+      <option value="year-desc">Year Descending</option>
+    </select>
+  </section>
+  
   <section>
     <ul id="most-liked">
     </ul>
