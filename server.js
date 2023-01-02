@@ -33,7 +33,6 @@ const widgetApiRoutes = require('./routes/widgets-api');
 const vehicleApiRoutes = require('./routes/vehicle-api');
 const indexApiRoutes = require('./routes/index-api')
 const usersRoutes = require('./routes/users');
-const searchRoutes = require('./routes/search');
 
 
 // Mount all resource routes
@@ -44,7 +43,6 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/vehicles', vehicleApiRoutes);
 app.use('/api/index', indexApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/search', searchRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
