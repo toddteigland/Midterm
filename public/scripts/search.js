@@ -27,13 +27,13 @@ $(() => {
   });
 });
 
-function getAllBySearch(params) {
-  let url = "/api/vehicles";
-  if (params) {
-    url += "?" + params;
-  }
-  return $.ajax({
-    url,
-  });
-}
+// function getAllBySearch(params) {
+//   let url = "/api/vehicles";
+//   if (params) {
+//     url += "?" + params;
+//   }
+//   return $.ajax({
+//     url,
+//   });
+// }
 

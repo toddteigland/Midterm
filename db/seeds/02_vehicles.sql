@@ -11,7 +11,7 @@ INSERT INTO vehicles (owner_id, make, model, yr, color, price, likes, thumbnail_
 INSERT INTO vehicles (owner_id, make, model, yr, color, price, likes, thumbnail_img, fullsize_img)
   VALUES (7, 'Tesla', 'Model 3', 2019, 'white', 62799, 9, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0jerT9lvo0qQJMKpsE6S8p08G54qUeHJWZg&usqp=CAU', 'https://cdn.motor1.com/images/mgl/OW9Ge/s1/white-model-3.jpg');
 INSERT INTO vehicles (owner_id, make, model, yr, color, price, likes, thumbnail_img, fullsize_img)
-  VALUES (8, 'Rivian', 'R1T', 2022, 'green', 126000, 5, 'https://d2q97jj8nilsnk.cloudfront.net/images/r1t-1.jpeg', 'https://cdn.motor1.com/images/mgl/pLK4o/s1/rivian-r1t-forest-green.jpg');
+  VALUES (8, 'Rivian', 'R1T', 2022, 'green', 126000, 8, 'https://d2q97jj8nilsnk.cloudfront.net/images/r1t-1.jpeg', 'https://cdn.motor1.com/images/mgl/pLK4o/s1/rivian-r1t-forest-green.jpg');
 INSERT INTO vehicles (owner_id, make, model, yr, color, price, likes, thumbnail_img, fullsize_img)
   VALUES (1, 'Aston Martin', 'DB11', 2018, 'black', 287999, 4,'https://www.autoguide.com/blog/wp-content/gallery/2018-aston-martin-db11-v8-review-9-26-2017/2018-Aston-Martin-DB11-V8-Front-07.jpg', 'https://www.autoguide.com/blog/wp-content/gallery/2018-aston-martin-db11-v8-review-9-26-2017/2018-Aston-Martin-DB11-V8-Rear-01.jpg');
 INSERT INTO vehicles (owner_id, make, model, yr, color, price, likes, thumbnail_img, fullsize_img)
