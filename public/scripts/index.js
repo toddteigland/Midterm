@@ -24,6 +24,7 @@ const createVehicleElement = (vehicle) => {
     <p> ${vehicle.make} <b>${vehicle.model}</b></p>
     <p> $${vehicle.price} </p>
     <p> # of LIKES = ${vehicle.likes}</p>
+    <button><i class="fa fa-heart" aria-hidden="true"></i></button>
     <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
     </li>`);
   return vehicleElement;
