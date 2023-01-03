@@ -1,49 +1,51 @@
+const { query } = require('express');
 const db = require('../connection');
 
-const getVehicles = (options) => {
-
+const filterVehicles = (options) => {
   const queryParams = [];
-
   queryString = `
   SELECT *
   FROM vehicles
+  JOIN users ON users.id = owner_id
   `;
-
-  if (options) {
-    queryParams.push(options);
+  if (options.make) {
+    queryParams.push(options.make);
     queryString += `WHERE make = $${queryParams.length}`;
   };
-
   if (options.model) {
-    queryParams.push(`%${options.model}%`);
-    queryString += ` WHERE model = $${queryParams.length}`;
+    queryParams.push(options.model);
+    if (queryParams.length === 1) {
+      queryString += ` WHERE model = $${queryParams.length}`;
+    } else {
+      queryString += ` AND model = $${queryParams.length}`;
+    }
   };
-  if (options.price) {
-    queryParams.push(options.price);
+  if (options.minPrice) {
+    queryParams.push(options.minPrice);
     if (queryParams.length === 1) {
       queryString += ` WHERE price >= $${queryParams.length}`;
     } else {
-    queryString += ` AND price >= $${queryParams.length}`;
+      queryString += ` AND price >= $${queryParams.length}`;
     }
   };
-  if (options.price) {
-    queryParams.push(options.price);
+  if (options.maxPrice) {
+    queryParams.push(options.maxPrice);
     if (queryParams.length === 1) {
-    queryString += ` WHERE price <= $${queryParams.length}`;
+      queryString += ` WHERE price <= $${queryParams.length}`;
     } else {
-    queryString += ` AND price <= $${queryParams.length}`;
+      queryString += ` AND price <= $${queryParams.length}`;
     }
   };
-  if (options.yr) {
-    queryParams.push(options.yr);
+  if (options.minYr) {
+    queryParams.push(options.minYr);
     if (queryParams.length === 1) {
       queryString += ` WHERE yr >= $${queryParams.length}`;
     } else {
-    queryString += ` AND yr >= $${queryParams.length}`;
+      queryString += ` AND yr >= $${queryParams.length}`;
     }
   };
-  if (options.yr) {
-    queryParams.push(options.yr);
+  if (options.maxYr) {
+    queryParams.push(options.maxYr);
     if (queryParams.length === 1) {
       queryString += ` WHERE yr <= $${queryParams.length}`;
     } else {
@@ -51,20 +53,29 @@ const getVehicles = (options) => {
     }
   };
 
+  if (options.sort === 'price-asc') {
+    queryString += ` ORDER BY price ASC`;
+  } else if (options.sort === 'price-desc') {
+    queryString += ` ORDER BY price DESC`;
+  } else if (options.sort === 'year-asc') {
+    queryString += ` ORDER BY yr ASC`;
+  } else if (options.sort === 'year-desc') {
+    queryString += ` ORDER BY yr DESC`;
+  } else if (options.sort === 'likes') {
+    queryString += ` ORDER BY likes DESC`;
+  }
+  
   queryString += `
-  ORDER BY likes desc
   LIMIT 10;
   `;
 
- console.log('QUERY STRING FROM GETVEHICLES FUNCTION: ', queryString)
-
   return db.query(queryString, queryParams)
-  .then((response) => {
-    return response.rows
-  });
+    .then((response) => {
+      return response.rows;
+    });
 };
 
 module.exports = {
-  getVehicles,
+  filterVehicles,
 }
 

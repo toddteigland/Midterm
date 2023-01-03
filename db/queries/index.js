@@ -2,7 +2,7 @@ const db = require('../connection');
 
 const getMostLiked = () => {
   return db.query(
-    'SELECT * FROM vehicles JOIN users ON users.id = owner_id;')
+    'SELECT * FROM vehicles JOIN users ON users.id = owner_id ORDER BY likes desc LIMIT 5;')
     .then(response => {
       return response.rows;
     });

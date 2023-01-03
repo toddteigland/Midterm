@@ -1,42 +1,73 @@
+
 <!DOCTYPE html>
 <html lang="en">
+  
+  <head>
+    <title>Home Page</title>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-<head>
-  <title>Home Page</title>
-
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/index.js"></script>
-</head>
-
+    
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/index.js"></script>
+  </head>
+  
+<%- include('partials/_header')-%>
 <body>
   <section>
-    <!-- This will be for a filter, using text input form -->
+    <form id="filter-form">
+      <label>Filter Results</label>
+      <div>
+        <label for="make">Make</label>
+        <input type="text" name="make" class="make" placeholder="Make">
+      </div>
+      <div>
+        <label for="model">Model</label>
+        <input type="text" name="model" class="model" placeholder="Model">
+      </div>
+      <div>
+        <label for="minPrice">Min price</label>
+        <input type="text" name="minPrice" class="min-price" placeholder="Min price">
+      </div>
+      <div>
+        <label for="maxPrice">Max price</label>
+        <input type="text" name="maxPrice" class="max-price" placeholder="Max price">
+      </div>
+      <div>
+        <label for="minYr">Min year</label>
+        <input type="text" name="minYr" class="min-year" placeholder="Min year">
+      </div>
+      <div>
+        <label for="maxYr">Max year</label>
+        <input type="text" name="maxYr" class="max-year" placeholder="Max year">
+      </div>
+      <div>
+        <select name="sort" id="sort" placeholder="Sort-by">
+          <option value="" disabled selected>Sort-by</option>
+          <option value="likes">Number of likes</option>
+          <option value="price-asc">Price Ascending</option>
+          <option value="price-desc">Price Descending</option>
+          <option value="year-asc">Year Ascending</option>
+          <option value="year-desc">Year Descending</option>
+        </select>
+        <input type="submit" value="Submit">
+      </div>
+    </form>
   </section>
-
   <section>
-    <label for="sort">Sort by:</label>
-    <select name="sort" id="sort">
-      <option value="num-likes">Number of likes</option>
-      <option value="price-asc">Price Ascending</option>
-      <option value="price-desc">Price Descending</option>
-      <option value="year-asc">Year Ascending</option>
-      <option value="year-desc">Year Descending</option>
-    </select>
-  </section>
-  
-  <section>
-    <ul id="most-liked">
+    <ul id="vehicleList">
     </ul>
   </section>
 </body>
-
+<%- include('partials/_footer')-%>
 </html>
