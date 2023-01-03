@@ -52,7 +52,6 @@ const filterVehicles = (options) => {
       queryString += ` AND yr <= $${queryParams.length}`;
     }
   };
-
   if (options.sort === 'price-asc') {
     queryString += ` ORDER BY price ASC`;
   } else if (options.sort === 'price-desc') {
@@ -64,7 +63,7 @@ const filterVehicles = (options) => {
   } else if (options.sort === 'likes') {
     queryString += ` ORDER BY likes DESC`;
   }
-  
+
   queryString += `
   LIMIT 10;
   `;
@@ -75,7 +74,25 @@ const filterVehicles = (options) => {
     });
 };
 
+
+const addLikes = (users.id) => {
+  queryParams = [];
+  queryString = ` 
+  INSERT INTO likes (user_id, vehicle_id)
+  JOIN users ON users.id = owner_id
+  JOIN likes ON owner_id = likes.user_id
+  WHERE users.id = $1
+  VALUES ($1, $2) ;`, [users.id,vehicle_id ];
+
+  return db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
+};
+
+
 module.exports = {
   filterVehicles,
+  addLikes
 }
 

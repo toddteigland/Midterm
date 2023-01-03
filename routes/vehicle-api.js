@@ -28,4 +28,16 @@ router.post('/filter', (req, res) => {
     })
 })
 
+router.post('/likes', (req, res) => {
+  searchQueries.addlikes(req.body)
+    .then (vehicles => {
+      res.json({ vehicles });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+})
+
 module.exports = router;

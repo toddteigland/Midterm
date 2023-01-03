@@ -18,20 +18,37 @@ const renderVehicles = (vehicles) => {
 
 const createVehicleElement = (vehicle) => {
   // Width + Height are just here temporarily until css is done!!!!!!!!! -->
-  const vehicleElement = $(`<li>
+  const vehicleElement = $(`<li id="${vehicle.id}">
     <img src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
     <p> ${vehicle.yr} </p>
     <p> ${vehicle.make} <b>${vehicle.model}</b></p>
     <p> $${vehicle.price} </p>
     <p> # of LIKES = ${vehicle.likes}</p>
-    <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+    <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
     <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
     </li>`);
   return vehicleElement;
 };
 
 $(() => {
-  loadVehicles();
+  loadVehicles()
+  setTimeout(() => {
+    $('.likeButton').each(function() {
+
+      $(this).on('click', (event) => {
+        event.preventDefault();
+        console.log('THIS:', $(this).parent()[0].id);
+      })
+    });
+
+    // $('.likeButton').on('click', (event) => {
+    //   event.preventDefault();
+    //   console.log('THIS: ', $(this))
+
+    // })
+    // console.log('LIKE BUTTONS PARENT: ', $likeButton);
+  }, 1000);
+
   const $filterForm = $('#filter-form');
   $filterForm.on('submit', (event) => {
     event.preventDefault();
@@ -45,4 +62,6 @@ $(() => {
         renderVehicles(response.vehicles);
       });
   });
+
 });
+
