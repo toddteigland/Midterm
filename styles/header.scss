@@ -1,6 +1,49 @@
+
 header {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 4rem;
+    height: 5rem;
+    background-color: aliceblue;
+    color: rgb(83, 83, 83);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
 }
+
+.header-container{
+    width: 90%;
+    margin: auto;
+    height: 5rem;
+    background-color: aliceblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-list{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+.nav-item{
+    padding-right: 30px;
+    list-style-type: none;
+}
+a:link {
+    color: rgb(83, 83, 83);
+    text-decoration: none;
+  }
+  
+  
+  a:visited {
+    color: rgb(83, 83, 83);
+  }
+  
+  
+  a:hover {
+    color: rgb(83, 83, 83);
+  }
+  
+  a:active {
+    color: rgb(83, 83, 83);
+  }
