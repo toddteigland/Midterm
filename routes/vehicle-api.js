@@ -43,4 +43,19 @@ router.post('/likes', (req, res) => {
     })
 })
 
+router.post('/removeLikes', (req, res) => {
+  const user_id = 1;
+  const vehicle_id = req.body.vehicleId; 
+  searchQueries.removeLikes(user_id, vehicle_id)
+    .then (() => {
+      res.status(201)
+      res.json({ });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+})
+
 module.exports = router;
