@@ -10,14 +10,14 @@ const filterVehicles = (options) => {
   `;
   if (options.make) {
     queryParams.push(options.make);
-    queryString += `WHERE make = $${queryParams.length}`;
+    queryString += `WHERE make ILIKE $${queryParams.length}`;
   };
   if (options.model) {
     queryParams.push(options.model);
     if (queryParams.length === 1) {
-      queryString += ` WHERE model = $${queryParams.length}`;
+      queryString += ` WHERE model ILIKE $${queryParams.length}`;
     } else {
-      queryString += ` AND model = $${queryParams.length}`;
+      queryString += ` AND model ILIKE $${queryParams.length}`;
     }
   };
   if (options.minPrice) {
