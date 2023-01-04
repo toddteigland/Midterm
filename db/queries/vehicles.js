@@ -75,15 +75,13 @@ const filterVehicles = (options) => {
 };
 
 
-const addLikes = (users_id) => {
-  queryParams = [];
-  queryString = ` 
+const addLikes = (user_id, vehicle_id) => {
+  const queryString = ` 
   INSERT INTO likes (user_id, vehicle_id)
-  JOIN users ON users.id = owner_id
-  JOIN likes ON owner_id = likes.user_id
-  WHERE users.id = $1
-  VALUES ($1, $2) ;`, [users.id,vehicle_id ];
-
+  VALUES ($1, $2) 
+  RETURNING *;`
+  const queryParams = [user_id,vehicle_id];
+  
   return db.query(queryString, queryParams)
     .then((response) => {
       return response.rows;

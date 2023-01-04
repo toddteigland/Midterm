@@ -32,12 +32,26 @@ const createVehicleElement = (vehicle) => {
 
 $(() => {
   loadVehicles()
+
+  // This is handling like button clicks
   setTimeout(() => {
     $('.likeButton').each(function() {
 
       $(this).on('click', (event) => {
         event.preventDefault();
-        console.log('THIS:', $(this).parent()[0].id);
+        const vehicleId = $(this).parent()[0].id;
+        const body = {
+          vehicleId: vehicleId
+        };
+
+        $.ajax({
+          method: 'POST',
+          url: '/api/vehicles/likes',
+          data: body
+        })
+        .then((response) => {
+          console.log('RESPONSE:', response);
+        })
       })
     });
   }, 1000);
