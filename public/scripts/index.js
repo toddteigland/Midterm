@@ -22,10 +22,10 @@ const createVehicleElement = (vehicle) => {
     <img src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
     <p> ${vehicle.yr} </p>
     <p> ${vehicle.make} <b>${vehicle.model}</b></p>
-    <p> $${vehicle.price} </p>
-    <p> # of LIKES = ${vehicle.likes}</p>
-    <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
     <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
+    <p> $${vehicle.price} </p>
+    <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
+    <p>${vehicle.likes}</p>
     </li>`);
   return vehicleElement;
 };
