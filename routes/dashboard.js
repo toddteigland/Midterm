@@ -9,9 +9,12 @@ app.use('/api/userCars', userCars)
 
 
 router.get('/', (req, res) => {
-  res.render('dashboard', {userLikes, userCars});
+  res.render('dashboard', {userLikes, userCars, userEmail: req.cookies.userEmail});
 }); 
 
+router.post('/dashboard', (req, res) => {
+  res.redirect('/dashboard')
+})
 
 
 module.exports = router;

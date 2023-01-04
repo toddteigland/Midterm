@@ -7,8 +7,13 @@ const getUsers = () => {
     });
 };
 
+const getRandomUser = () => {
+  return db.query( 'SELECT * FROM users WHERE id = 1;')
+  .then(data => {
+    return data.rows[0];
+  });
+}
 
 
 
-
-module.exports = { getUsers };
+module.exports = { getUsers, getRandomUser };
