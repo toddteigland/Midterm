@@ -29,9 +29,27 @@ router.post('/filter', (req, res) => {
 })
 
 router.post('/likes', (req, res) => {
-  searchQueries.addlikes(req.body)
-    .then (vehicles => {
-      res.json({ vehicles });
+  const user_id = 1;
+  const vehicle_id = req.body.vehicleId; 
+  searchQueries.addLikes(user_id, vehicle_id)
+    .then (() => {
+      res.status(201)
+      res.json({ });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    })
+})
+
+router.post('/removeLikes', (req, res) => {
+  const user_id = 1;
+  const vehicle_id = req.body.vehicleId; 
+  searchQueries.removeLikes(user_id, vehicle_id)
+    .then (() => {
+      res.status(201)
+      res.json({ });
     })
     .catch(err => {
       res

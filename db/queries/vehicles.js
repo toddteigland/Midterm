@@ -10,14 +10,14 @@ const filterVehicles = (options) => {
   `;
   if (options.make) {
     queryParams.push(options.make);
-    queryString += `WHERE make = $${queryParams.length}`;
+    queryString += `WHERE make ILIKE $${queryParams.length}`;
   };
   if (options.model) {
     queryParams.push(options.model);
     if (queryParams.length === 1) {
-      queryString += ` WHERE model = $${queryParams.length}`;
+      queryString += ` WHERE model ILIKE $${queryParams.length}`;
     } else {
-      queryString += ` AND model = $${queryParams.length}`;
+      queryString += ` AND model ILIKE $${queryParams.length}`;
     }
   };
   if (options.minPrice) {
@@ -75,24 +75,37 @@ const filterVehicles = (options) => {
 };
 
 
-const addLikes = (users_id) => {
-  queryParams = [];
-  queryString = ` 
+const addLikes = (user_id, vehicle_id) => {
+  const queryString = ` 
   INSERT INTO likes (user_id, vehicle_id)
-  JOIN users ON users.id = owner_id
-  JOIN likes ON owner_id = likes.user_id
-  WHERE users.id = $1
-  VALUES ($1, $2) ;`, [users.id,vehicle_id ];
-
+  VALUES ($1, $2) 
+  RETURNING *;`
+  const queryParams = [user_id,vehicle_id];
+  
   return db.query(queryString, queryParams)
     .then((response) => {
       return response.rows;
     });
 };
 
+const removeLikes = (user_id, vehicle_id) => {
+  const queryString = `
+  DELETE FROM likes 
+  WHERE user_id = $1 AND 
+  vehicle_id = $2;`
+
+  const queryParams = [user_id,vehicle_id];
+  
+  return db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
+
+}
 
 module.exports = {
   filterVehicles,
-  addLikes
+  addLikes,
+  removeLikes
 }
 
