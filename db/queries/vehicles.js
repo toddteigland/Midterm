@@ -88,9 +88,24 @@ const addLikes = (user_id, vehicle_id) => {
     });
 };
 
+const removeLikes = (user_id, vehicle_id) => {
+  const queryString = `
+  DELETE FROM likes 
+  WHERE user_id = $1 AND 
+  vehicle_id = $2;`
+
+  const queryParams = [user_id,vehicle_id];
+  
+  return db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
+
+}
 
 module.exports = {
   filterVehicles,
-  addLikes
+  addLikes,
+  removeLikes
 }
 

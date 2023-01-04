@@ -31,28 +31,37 @@ const createVehicleElement = (vehicle) => {
 };
 
 $(() => {
-  loadVehicles()
+  loadVehicles();
 
-  // This is handling like button clicks
+  // This is handling the like button clicks
   setTimeout(() => {
     $('.likeButton').each(function() {
-
-      $(this).on('click', (event) => {
-        event.preventDefault();
-        const vehicleId = $(this).parent()[0].id;
-        const body = {
-          vehicleId: vehicleId
-        };
-
-        $.ajax({
-          method: 'POST',
-          url: '/api/vehicles/likes',
-          data: body
-        })
-        .then((response) => {
-          console.log('RESPONSE:', response);
-        })
-      })
+      const vehicleId = $(this).parent()[0].id;
+      const body = {
+        vehicleId: vehicleId
+      };
+      $(this).on('click', () => {
+        if (!$(this).hasClass('liked')) {
+          $.ajax({
+            method: 'POST',
+            url: '/api/vehicles/likes',
+            data: body
+          })
+            .then((response) => {
+              $(this).addClass('liked');
+            });
+        } else {
+          $.ajax({
+            method: 'POST',
+            url: '/api/vehicles/removeLikes',
+            data: body
+          })
+            .then((response) => {
+              $(this).removeClass('liked');
+              console.log('REMOVE LIKES CLICKED');
+            });
+        }
+      });
     });
   }, 1000);
 
