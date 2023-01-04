@@ -40,13 +40,6 @@ $(() => {
         console.log('THIS:', $(this).parent()[0].id);
       })
     });
-
-    // $('.likeButton').on('click', (event) => {
-    //   event.preventDefault();
-    //   console.log('THIS: ', $(this))
-
-    // })
-    // console.log('LIKE BUTTONS PARENT: ', $likeButton);
   }, 1000);
 
   const $filterForm = $('#filter-form');

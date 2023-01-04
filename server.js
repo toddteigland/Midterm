@@ -30,10 +30,9 @@ app.use(express.static('public'));
 // Note: Feel free to replace the example routes below with your own
 const widgetApiRoutes = require('./routes/widgets-api');
 const userApiRoutes = require('./routes/users-api');
-const vehicleApiRoutes = require('./routes/search-api');
+const vehicleApiRoutes = require('./routes/vehicle-api');
 const indexApiRoutes = require('./routes/index-api')
 const usersRoutes = require('./routes/users');
-const searchRoutes = require('./routes/search');
 const userDashboard = require('./routes/dashboard')
 const userLikesApiRoutes = require('./routes/likedCars-api')
 
@@ -46,7 +45,6 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/vehicles', vehicleApiRoutes);
 app.use('/api/index', indexApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/search', searchRoutes);
 app.use('/dashboard', userDashboard)
 app.use('/api/likedCars', userLikesApiRoutes)
 // Note: mount other resources here, using the same pattern above

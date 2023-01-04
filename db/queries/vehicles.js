@@ -75,7 +75,7 @@ const filterVehicles = (options) => {
 };
 
 
-const addLikes = (users.id) => {
+const addLikes = (users_id) => {
   queryParams = [];
   queryString = ` 
   INSERT INTO likes (user_id, vehicle_id)
