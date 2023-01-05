@@ -1,23 +1,63 @@
-const loadVehicles = () => {
-  $.ajax({
-    method: 'GET',
-    url: '/api/index'
-  })
-    .then((response) => {
-      renderVehicles(response.vehicles);
-    });
-};
+let user = '';
+$(document).ready(function(e) {
 
-const renderVehicles = (vehicles) => {
-  const $vehicleList = $('#vehicleList');
-  $vehicleList.empty();
-  for (vehicle of vehicles) {
-    $vehicleList.append(createVehicleElement(vehicle));
-  }
-};
+  //make function displaynav, call it
+  const displayNav = function() {
+    if (user) {
+      $('.userEmail').text(user);
+      $('.logoutForm').show();
+      $('.dashboard-nav').show();
+      $('.likeButton').attr('disabled',false);
 
-const createVehicleElement = (vehicle) => {
-  const vehicleElement = $(`<li>
+      // 
+    } else {
+      $('.logoutForm').hide();
+      $('.loginForm').show();
+      $('.userEmail').text('');
+      $('.dashboard-nav').hide();
+      $('.likeButton').attr('disabled',true);
+    }
+  };
+  displayNav();
+
+  $('.loginForm').on('submit', function(event) {
+    event.preventDefault();
+    const data = $(this).serialize();
+    $.post('/login', data)
+      .then((res) => {
+        user = res.userEmail;
+        displayNav();
+      });
+  });
+
+  $('.logoutForm').on('submit', function(event) {
+    event.preventDefault();
+    $.post('/logout')
+      .then((res) => {
+      });
+  });
+
+  const loadVehicles = () => {
+    $.ajax({
+      method: 'GET',
+      url: '/api/index'
+    })
+      .then((response) => {
+        renderVehicles(response.vehicles);
+      });
+  };
+  loadVehicles();
+
+  const renderVehicles = (vehicles) => {
+    const $vehicleList = $('#vehicleList');
+    $vehicleList.empty();
+    for (vehicle of vehicles) {
+      $vehicleList.append(createVehicleElement(vehicle));
+    }
+  };
+
+  const createVehicleElement = (vehicle) => {
+    const vehicleElement = $(`<li class="test">
     <div class="car-detail1">
       <img class="car-img" src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
       <div class="car-info">
@@ -34,45 +74,54 @@ const createVehicleElement = (vehicle) => {
       </div>
     </div>
   </li>`);
-  return vehicleElement;
-};
+    return vehicleElement;
+  };
 
-$(() => {
-  loadVehicles();
+
+  // const userEmail = req.cookies.userEmail;
+
+  $(".result").on("click", ".likeButton", function(e) {
+    //   //e.preventDefault();
+    console.log('CLICKED!!!!!');
+    if(!user) {
+      return
+    }
+    const vehicleId = $(this).parent()[0].id;
+    const body = {
+      vehicleId: vehicleId
+    };
+
+    if (!$(this).hasClass('liked')) {
+      $.post('/api/vehicles/likes',body)
+        .then((response) => {
+          $(this).addClass('liked');
+        });
+    } else {
+      $.ajax({
+        method: 'POST',
+        url: '/api/vehicles/removeLikes',
+        data: body
+      })
+        .then((response) => {
+          $(this).removeClass('liked');
+        });
+    }
+  });
+
+  // } else { //You are not logged in and we give user a message
+  //   alert("Please log in before liking vehicles");
+  // }
+  //   });
+
+
+
+
 
   // This is handling the like button clicks
-  setTimeout(() => {
-    $('.likeButton').each(function() {
-      const vehicleId = $(this).parent()[0].id;
-      console.log('VEHICLE ID:', vehicleId);
-      const body = {
-        vehicleId: vehicleId
-      };
-       if(userEmail) { 
-      $(this).on('click', () => {
-        if (!$(this).hasClass('liked')) {
-          $.ajax({
-            method: 'POST',
-            url: '/api/vehicles/likes',
-            data: body
-          })
-            .then((response) => {
-              $(this).addClass('liked');
-            });
-        } else {
-          $.ajax({
-            method: 'POST',
-            url: '/api/vehicles/removeLikes',
-            data: body
-          })
-            .then((response) => {
-              $(this).removeClass('liked');
-            });
-        }
-      });
-    }
-    });
-  }, 1000);
+  // setTimeout(() => {
+  //   $('.likeButton').each(function() {
+
+  // }, 1000);
 
   const $filterForm = $('#filter-form');
   $filterForm.on('submit', (event) => {
