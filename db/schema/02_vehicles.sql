@@ -7,7 +7,6 @@ CREATE TABLE vehicles (
   yr INT NOT NULL,
   color VARCHAR(20) NOT NULL,
   price INT NOT NULL,
-  likes INT NOT NULL DEFAULT 0,
   thumbnail_img VARCHAR(255) NOT NULL, 
   fullsize_img VARCHAR(255) NOT NULL
 );
