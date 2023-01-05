@@ -18,10 +18,6 @@
 <%- include('partials/_header')-%>
 <body>
   <main>
-      <!-- Liked Cars -->
-    <div id="liked-cars">
-      <h2>Liked Vehicles</h2>
-      <div id="liked-list"></div>
 
   <!-- Liked Cars -->
   <div id="liked-cars">
@@ -68,7 +64,7 @@
             <input type="text" id="make" name="make"><br>
           </div>
       <!-- <%= likedCars[0].make %> -->
-      <% for(let ownerCar of ownerCars) { %>
+      <!-- <% for(let ownerCar of ownerCars) { %>
         <div class="ownerCar">
           <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
           <p>Year: <%= ownerCar.yr %></p>
@@ -77,16 +73,16 @@
           <p>Color: <%= ownerCar.color %></p>
           <p><img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150"></p>
         </div>
-        <% } %>
+        <% } %> -->
     </div>
   </div>
 
   <!-- New Posting -->
-  <div id="new-posting">
+  <!-- <div id="new-posting">
     <h2>Post your car!</h2>
     <form id="new-posting-form" action="/dashboard" method="POST">
       <label for="make">Make</label><br>
-      <input type="text" id="make" name="make"><br>
+      <input type="text" id="make" name="make"><br> 
       <label for="model">Model</label><br>
       <input type="text" id="model" name="model"><br>
       <label for="yr">Year</label><br>
@@ -94,16 +90,16 @@
       <label class="price" for="price">Price</label><br>
       <input type="number" id="price" name="price"><br>
       <label for="color">Color</label><br>
-      <input type="text" id="color" name="color"><br><br>
+      <input type="text" id="color" name="color"><br><br>  -->
 
       <!-- Add photos for submission -->
-      <label for="photos">Photos</label><br>
+      <!-- <label for="photos">Photos</label><br>
       <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
       <br><br>
       <input type="submit" value="Submit">
     </form> 
   </div>
-  
+   -->
           <div class="filter-item">
             <label for="model">Model</label><br>
             <input type="text" id="model" name="model"><br>
@@ -124,17 +120,17 @@
             <input type="text" id="color" name="color"><br><br>
           </div>
           <!-- Add photos for submission -->
-          <label for="photos">Photos</label><br>
+          <!-- <label for="photos">Photos</label><br>
           <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
           <br>
-          <div class="button-container">
-            <input id="button" type="submit" value="Submit">
+          <div class="button-container"> -->
+            <!-- <input id="button" type="submit" value="Submit"> -->
 
-      <!-- Add photos for submission -->
+          <!-- Add photos for submission -->
       <label for="photos">Photos</label><br>
-      <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
+      <input type="file" id="photos" name="photos" multiple accept=".jpg,.png">
       <br><br>
-      <input type="submit" value="Submit">
+      <input id="postCar" value="Submit">
     </form> 
   </div>
   

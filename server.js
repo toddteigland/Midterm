@@ -76,21 +76,6 @@ app.get('/', (req, res) => {
   res.render('index', templateVars);  // pass the templateVars object to the view
 });
 
-app.post('/dashboard', (req, res) => {
-  const { make, model, yr, price, color, photos } = req.body;
-
-  // Save form data to database
-  saveToDatabase(make, model, yr, price, color, photos)
-    .then(() => {
-      // Redirect user to dashboard page after form submission
-      res.redirect("/dashboard");
-    })
-    .catch(err => {
-      // Handle error
-    });
-})
-
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
