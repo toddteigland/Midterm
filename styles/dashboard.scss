@@ -1,0 +1,127 @@
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient( rgb(223, 234, 243), whitesmoke);
+    font-family: 'Montserrat', sans-serif;
+}
+.liked-cars{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.liked-cars h2{
+    flex: 1 1 90%;
+}
+#liked-list{
+    flex: 1 1 90%;
+
+
+}
+#listed-cars{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#listed-cars h2{
+    flex: 1 1 90%;
+}
+.listed-cars{
+    flex: 1 1 90%;
+
+}
+
+// form 
+.form-container{
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+#new-posting{
+    padding: 2rem;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+    line-height: 3rem;
+    font-weight: bolder;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  
+  }
+  #new-posting-form{
+    display: flex;
+    flex-direction: column;
+  
+  }
+  .filter-item{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter-item label{
+    padding: 1rem;
+    color: #028455;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    flex: 1 1 40%;
+  
+  }
+  .filter-item input {
+    padding: 1rem;
+    flex: 1 1 60%;
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  }
+  #button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1.5rem;
+    color: #429174;
+    background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 100%;
+    font-size: 1.2rem;
+
+    height: 4rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  #button:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1.5rem;
+    color: #429174;
+    background-image:radial-gradient(#def5f4, #8eb8c3) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 100%;
+    height: 4rem;
+    font-size: 1.2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

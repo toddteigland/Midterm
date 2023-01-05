@@ -19,46 +19,63 @@
 
 <%- include('partials/_header')-%>
 <body>
-
-  <!-- Liked Cars -->
-  <div id="liked-cars">
-    <h2>Liked Vehicles</h2>
-    <div id="liked-list">
-
+  <main>
+      <!-- Liked Cars -->
+    <div id="liked-cars">
+      <h2>Liked Vehicles</h2>
+      <div id="liked-list"></div>
     </div>
-  </div>
 
-  <!-- Listed Cars -->
-  <div id="listed-cars">
-    <h2>My Listed Cars</h2>
+      <!-- Listed Cars -->
     <div id="listed-cars">
-
+      <h2>My Listed Cars</h2>
+      <div id="listed-cars"></div>
     </div>
-  </div>
 
-  <!-- New Posting -->
-  <div id="new-posting">
-    <h2>Post your car!</h2>
-    <form id="new-posting-form">
-      <label for="make">Make</label><br>
-      <input type="text" id="make" name="make"><br>
-      <label for="model">Model</label><br>
-      <input type="text" id="model" name="model"><br>
-      <label for="yr">Year</label><br>
-      <input type="number" id="yr" name="yr"><br>
-      <label for="price">Price</label><br>
-      <input type="number" id="price" name="price"><br>
-      <label for="color">Color</label><br>
-      <input type="text" id="color" name="color"><br><br>
-
-      <!-- Add photos for submission -->
-      <label for="photos">Photos</label><br>
-      <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
-      <br><br>
-      <input type="submit" value="Submit">
-    </form> 
-  </div>
+      <!-- New Posting -->
+    <section class="form-container">
+      <div id="new-posting">
+        <h2>Post your car!</h2>
+        <form id="new-posting-form">
   
+          <div class="filter-item">
+            <label for="make">Make</label><br>
+            <input type="text" id="make" name="make"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="model">Model</label><br>
+            <input type="text" id="model" name="model"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="yr">Year</label><br>
+            <input type="number" id="yr" name="yr"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="price">Price</label><br>
+            <input type="number" id="price" name="price"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="color">Color</label><br>
+            <input type="text" id="color" name="color"><br><br>
+          </div>
+          <!-- Add photos for submission -->
+          <label for="photos">Photos</label><br>
+          <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
+          <br>
+          <div class="button-container">
+            <input id="button" type="submit" value="Submit">
+
+          </div>
+          
+        </form> 
+      </div>
+    </section>
+
+  </main>
 </body>
 <%- include('partials/_footer')-%>
 </html>
