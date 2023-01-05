@@ -87,6 +87,22 @@ $(() => {
         renderVehicles(response.vehicles);
       });
   });
+  $("#postCar").click(function(){
+    $.post("/dashboard/api/cars",
+    {
+      owner_id: 1,
+      make: $("#make").val(),
+      model:  $("#model").val(),
+      yr:  $("#yr").val(),
+      price:  $("#price").val(),
+      color:  $("#color").val(),
+      thumbnail_img:  $("#photos").val(),
+      fullsize_img: $("#photos").val(),
+    },
+    function(data, status){
+      location.reload();
+    });
+  })
 
 });
 
