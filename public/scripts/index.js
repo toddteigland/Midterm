@@ -66,7 +66,6 @@ $(() => {
           })
             .then((response) => {
               $(this).removeClass('liked');
-              console.log('REMOVE LIKES CLICKED');
             });
         }
       });

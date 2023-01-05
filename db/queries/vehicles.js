@@ -4,13 +4,14 @@ const db = require('../connection');
 const filterVehicles = (options) => {
   const queryParams = [];
   queryString = `
-  SELECT *
-  FROM vehicles
-  JOIN users ON users.id = owner_id
-  `;
+  SELECT count(likes.vehicle_id) as likes, vehicles.id as vehicleid, vehicles.thumbnail_img as thumbnail_img, users.email as email,
+  vehicles.yr, vehicles.make, vehicles.model, vehicles.price
+  FROM likes 
+  JOIN vehicles ON likes.vehicle_id = vehicles.id
+  JOIN users ON vehicles.owner_id = users.id`;
   if (options.make) {
     queryParams.push(options.make);
-    queryString += `WHERE make ILIKE $${queryParams.length}`;
+    queryString += ` WHERE make ILIKE $${queryParams.length}`;
   };
   if (options.model) {
     queryParams.push(options.model);
@@ -52,6 +53,9 @@ const filterVehicles = (options) => {
       queryString += ` AND yr <= $${queryParams.length}`;
     }
   };
+  queryString += `
+  GROUP BY likes.vehicle_id, vehicles.id, vehicles.thumbnail_img, users.email, vehicles.yr, vehicles.make
+  , vehicles.model, vehicles.price`;
   if (options.sort === 'price-asc') {
     queryString += ` ORDER BY price ASC`;
   } else if (options.sort === 'price-desc') {
@@ -80,7 +84,7 @@ const addLikes = (user_id, vehicle_id) => {
   INSERT INTO likes (user_id, vehicle_id)
   VALUES ($1, $2) 
   RETURNING *;`
-  const queryParams = [user_id,vehicle_id];
+  const queryParams = [4,vehicle_id];
   
   return db.query(queryString, queryParams)
     .then((response) => {
@@ -94,7 +98,7 @@ const removeLikes = (user_id, vehicle_id) => {
   WHERE user_id = $1 AND 
   vehicle_id = $2;`
 
-  const queryParams = [user_id,vehicle_id];
+  const queryParams = [4,vehicle_id];
   
   return db.query(queryString, queryParams)
     .then((response) => {
