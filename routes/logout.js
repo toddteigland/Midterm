@@ -4,7 +4,7 @@ const router  = express.Router();
 
 router.post('/', (req, res) => {
   res.clearCookie('userEmail');
-  res.redirect('/');
+  res.json({});
 })
 
 
