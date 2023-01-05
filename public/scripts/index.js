@@ -19,14 +19,22 @@ const renderVehicles = (vehicles) => {
 const createVehicleElement = (vehicle) => {
   // Width + Height are just here temporarily until css is done!!!!!!!!! -->
   const vehicleElement = $(`<li id="${vehicle.id}">
-    <img src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
-    <p> ${vehicle.yr} </p>
-    <p> ${vehicle.make} <b>${vehicle.model}</b></p>
+    <div class="car-detail1">
+      <img class="car-img" src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
+      <div class="car-info">
+        <p> ${vehicle.make} <b>${vehicle.model}</b></p>
+        <p> ${vehicle.yr} </p>
+      </div>
+    </div>
     <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
-    <p> $${vehicle.price} </p>
-    <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
-    <p>${vehicle.likes}</p>
-    </li>`);
+    <div class="car-detail2">
+      <p> $${vehicle.price} </p>
+      <div class="like">
+        <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
+        <p>${vehicle.likes}</p>
+      </div>
+    </div>
+  </li>`);
   return vehicleElement;
 };
 
