@@ -5,6 +5,8 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+const cookieParser = require('cookie-parser')
+
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -25,6 +27,7 @@ app.use(
   })
 );
 app.use(express.static('public'));
+app.use(cookieParser())
 //gary and ilia
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
@@ -35,11 +38,19 @@ const indexApiRoutes = require('./routes/index-api')
 const usersRoutes = require('./routes/users');
 const userDashboard = require('./routes/dashboard')
 const userLikesApiRoutes = require('./routes/likedCars-api')
+const userLogin = require('./routes/login')
+const loginApiRoutes = require('./routes/login-api')
+const logoutRoutes = require('./routes/logout');
+
 
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
+app.use('/', loginApiRoutes);
+app.use('/login', userLogin);
+//app.use('/api/login', loginApiRoutes)
+app.use('/logout', logoutRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/api/vehicles', vehicleApiRoutes);
@@ -47,6 +58,8 @@ app.use('/api/index', indexApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/dashboard', userDashboard)
 app.use('/api/likedCars', userLikesApiRoutes)
+
+//app.use('/api/login', userLoginRoutes)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -54,8 +67,20 @@ app.use('/api/likedCars', userLikesApiRoutes)
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  console.log(req.cookies.userEmail)
+  let userEmail = "";
+  if (req.cookies.userEmail) {
+    userEmail = req.cookies.userEmail;
+  }
+  const templateVars = {
+    userEmail: userEmail
+  }
+  res.render('index', templateVars);  // pass the templateVars object to the view
 });
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
