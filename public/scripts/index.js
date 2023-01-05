@@ -48,6 +48,7 @@ $(() => {
       const body = {
         vehicleId: vehicleId
       };
+       if(userEmail) { 
       $(this).on('click', () => {
         if (!$(this).hasClass('liked')) {
           $.ajax({
@@ -69,6 +70,7 @@ $(() => {
             });
         }
       });
+    }
     });
   }, 1000);
 
