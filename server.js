@@ -49,7 +49,6 @@ const logoutRoutes = require('./routes/logout');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/', loginApiRoutes);
 app.use('/login', userLogin);
-//app.use('/api/login', loginApiRoutes)
 app.use('/logout', logoutRoutes);
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
@@ -59,7 +58,6 @@ app.use('/users', usersRoutes);
 app.use('/dashboard', userDashboard)
 app.use('/api/likedCars', userLikesApiRoutes)
 
-//app.use('/api/login', userLoginRoutes)
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -78,7 +76,19 @@ app.get('/', (req, res) => {
   res.render('index', templateVars);  // pass the templateVars object to the view
 });
 
+app.post('/dashboard', (req, res) => {
+  const { make, model, yr, price, color, photos } = req.body;
 
+  // Save form data to database
+  saveToDatabase(make, model, yr, price, color, photos)
+    .then(() => {
+      // Redirect user to dashboard page after form submission
+      res.redirect("/dashboard");
+    })
+    .catch(err => {
+      // Handle error
+    });
+})
 
 
 
