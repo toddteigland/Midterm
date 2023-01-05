@@ -15,6 +15,8 @@
       <link rel="stylesheet" href="/styles/header.css" />
       <link rel="stylesheet" href="/styles/footer.css" />
       <link rel="stylesheet" href="/styles/index.css" />
+      <link rel="stylesheet" href="/styles/dashboard.css" />
+
 
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -27,11 +29,11 @@
         <header>
             <div class="header-container">
               <div class="logo-container">
-                <img class="logo" src="images/logo.png" alt="logo">
+                <a href="/"><img class="logo" src="images/logo.png" alt="logo"></a>
               </div>
               <div class="nav-bar">
                 <ul class="nav-list">
-                  <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
 
                   <% if(userEmail) { %>
                     <li class="nav-item"><a href="/dashboard" class="nav-link ">My Dashboard</a></li>

@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/dashboard.css" />
+
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/index.js"></script>
@@ -17,38 +19,137 @@
 
 <%- include('partials/_header')-%>
 <body>
+  <main>
+      <!-- Liked Cars -->
+    <div id="liked-cars">
+      <h2>Liked Vehicles</h2>
+      <div id="liked-list"></div>
 
   <!-- Liked Cars -->
   <div id="liked-cars">
     <h2>Liked Vehicles</h2>
     <div id="liked-list">
+      <% for(let likedCar of likedCars) { %>
+        <div class="likedCar">
+          <h3><%= likedCar.make %> <%= likedCar.model %></h3>
+          <p>Year: <%= likedCar.yr %></p>
+          <p>Price: $<%= likedCar.price %></p>
+          <p>Color: <%= likedCar.color %></p>
+          <img src="<%= likedCar.thumbnail_img %>" alt="<%= likedCar.make %> <%= likedCar.model %>" width="200" height="150">
+        </div>
+        <% } %>
+    </div>
 
+      <!-- Listed Cars -->
+    <div id="listed-cars">
+      <h2>My Listed Cars</h2>
+      <div id="listed-cars"></div>
+    </div>
+
+      <!-- New Posting -->
+    <section class="form-container">
+      <div id="new-posting">
+        <h2>Post your car!</h2>
+        <form id="new-posting-form">
+  
+          <div class="filter-item">
+            <label for="make">Make</label><br>
+            <input type="text" id="make" name="make"><br>
+          </div>
+      <!-- <%= likedCars[0].make %> -->
+      <% for(let ownerCar of ownerCars) { %>
+        <div class="ownerCar">
+          <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
+          <p>Year: <%= ownerCar.yr %></p>
+          <p>Price: $<%= ownerCar.price %>
+            <button class="sold-bttn" id="<%= ownerCar.id %>">Mark as Sold</button></p>
+          <p>Color: <%= ownerCar.color %></p>
+          <p><img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150"></p>
+        </div>
+        <% } %>
     </div>
   </div>
 
-  <!-- Listed Cars -->
-  <div id="listed-cars">
-    <h2>My Listed Cars</h2>
-    <div id="listed-cars">
-
+      <!-- New Posting -->
+    <section class="form-container">
+      <div id="new-posting">
+        <h2>Post your car!</h2>
+        <form id="new-posting-form">
+  
+          <div class="filter-item">
+            <label for="make">Make</label><br>
+            <input type="text" id="make" name="make"><br>
+          </div>
+      <!-- <%= likedCars[0].make %> -->
+      <% for(let ownerCar of ownerCars) { %>
+        <div class="ownerCar">
+          <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
+          <p>Year: <%= ownerCar.yr %></p>
+          <p>Price: $<%= ownerCar.price %>
+            <button class="sold-bttn" id="<%= ownerCar.id %>">Mark as Sold</button></p>
+          <p>Color: <%= ownerCar.color %></p>
+          <p><img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150"></p>
+        </div>
+        <% } %>
     </div>
   </div>
 
   <!-- New Posting -->
   <div id="new-posting">
     <h2>Post your car!</h2>
-    <form id="new-posting-form">
+    <form id="new-posting-form" action="/dashboard" method="POST">
       <label for="make">Make</label><br>
       <input type="text" id="make" name="make"><br>
       <label for="model">Model</label><br>
       <input type="text" id="model" name="model"><br>
       <label for="yr">Year</label><br>
       <input type="number" id="yr" name="yr"><br>
-      <label for="price">Price</label><br>
+      <label class="price" for="price">Price</label><br>
       <input type="number" id="price" name="price"><br>
       <label for="color">Color</label><br>
       <input type="text" id="color" name="color"><br><br>
 
+      <!-- Add photos for submission -->
+      <label for="photos">Photos</label><br>
+      <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form> 
+  </div>
+  
+          <div class="filter-item">
+            <label for="model">Model</label><br>
+            <input type="text" id="model" name="model"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="yr">Year</label><br>
+            <input type="number" id="yr" name="yr"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="price">Price</label><br>
+            <input type="number" id="price" name="price"><br>
+          </div>
+  
+          <div class="filter-item">
+            <label for="color">Color</label><br>
+            <input type="text" id="color" name="color"><br><br>
+          </div>
+          <!-- Add photos for submission -->
+          <label for="photos">Photos</label><br>
+          <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
+          <br>
+          <div class="button-container">
+            <input id="button" type="submit" value="Submit">
+
+          </div>
+          
+        </form> 
+      </div>
+    </section>
+
+  </main>
       <!-- Add photos for submission -->
       <label for="photos">Photos</label><br>
       <input type="file" id="photos" name="photos" multiple accept=".jpg, .png">
