@@ -84,8 +84,7 @@ const addLikes = (user_id, vehicle_id) => {
   INSERT INTO likes (user_id, vehicle_id)
   VALUES ($1, $2) 
   RETURNING *;`
-  const queryParams = [4,vehicle_id];
-  
+  const queryParams = [user_id,vehicle_id];
   return db.query(queryString, queryParams)
     .then((response) => {
       return response.rows;
@@ -97,9 +96,7 @@ const removeLikes = (user_id, vehicle_id) => {
   DELETE FROM likes 
   WHERE user_id = $1 AND 
   vehicle_id = $2;`
-
-  const queryParams = [4,vehicle_id];
-  
+  const queryParams = [user_id,vehicle_id];
   return db.query(queryString, queryParams)
     .then((response) => {
       return response.rows;

@@ -17,8 +17,7 @@ const renderVehicles = (vehicles) => {
 };
 
 const createVehicleElement = (vehicle) => {
-  // Width + Height are just here temporarily until css is done!!!!!!!!! -->
-  const vehicleElement = $(`<li id="${vehicle.id}">
+  const vehicleElement = $(`<li>
     <div class="car-detail1">
       <img class="car-img" src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
       <div class="car-info">
@@ -29,7 +28,7 @@ const createVehicleElement = (vehicle) => {
     <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
     <div class="car-detail2">
       <p> $${vehicle.price} </p>
-      <div class="like">
+      <div id="${vehicle.id}" class="like">
         <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
         <p>${vehicle.likes}</p>
       </div>
@@ -45,6 +44,7 @@ $(() => {
   setTimeout(() => {
     $('.likeButton').each(function() {
       const vehicleId = $(this).parent()[0].id;
+      console.log('VEHICLE ID:', vehicleId);
       const body = {
         vehicleId: vehicleId
       };
