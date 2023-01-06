@@ -42,6 +42,7 @@ const userLogin = require('./routes/login');
 const loginApiRoutes = require('./routes/login-api');
 const logoutRoutes = require('./routes/logout');
 const vehicleRoutes = require('./routes/vehicle');
+const { markedSold } = require('./db/queries/markAsSold');
 
 
 // Mount all resource routes
@@ -58,6 +59,7 @@ app.use('/users', usersRoutes);
 app.use('/dashboard', userDashboard);
 app.use('/api/likedCars', userLikesApiRoutes);
 app.use('/vehicle', vehicleRoutes);
+
 
 // Note: mount other resources here, using the same pattern above
 
@@ -77,6 +79,10 @@ app.get('/', (req, res) => {
   res.render('index', templateVars);  // pass the templateVars object to the view
 });
 
+app.post('/api/cars/:id', async(req, res) => {
+  console.log("MarkSold", req.params.id)
+  markedSold(req.params.id)
+})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

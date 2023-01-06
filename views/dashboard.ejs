@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
   <link rel="stylesheet" href="/styles/dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+  crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 
   <script src="/vendor/jquery-3.0.0.js"></script>
@@ -30,8 +33,12 @@
           <h3><%= likedCar.make %> <%= likedCar.model %></h3>
           <p>Year: <%= likedCar.yr %></p>
           <p>Price: $<%= likedCar.price %></p>
-          <p>Color: <%= likedCar.color %></p>
+          <div id="${vehicle.id}" class="like">
+            <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
+          <p>Likes: <%= likedCar.likes %></p>
+          </div>
           <img src="<%= likedCar.thumbnail_img %>" alt="<%= likedCar.make %> <%= likedCar.model %>" width="200" height="150">
+          <p>Contact Owner: <a href="mailto: <%= likedCar.email %>"><%= likedCar.email %></a></p>
         </div>
         <% } %>
     </div>
@@ -58,7 +65,7 @@
           <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
           <p>Year: <%= ownerCar.yr %></p>
           <p>Price: $<%= ownerCar.price %>
-            <button class="sold-bttn" id="<%= ownerCar.id %>">Mark as Sold</button></p>
+            <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>')" id="<%= ownerCar.id %>">Mark as Sold</button></p>
           <p>Color: <%= ownerCar.color %></p>
           <p><img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150"></p>
         </div>
@@ -120,12 +127,12 @@
   
           <div class="filter-item">
             <label for="yr">Year</label><br>
-            <input type="number" id="yr" name="yr"><br>
+            <input type="text" id="yr" name="yr"><br>
           </div>
   
           <div class="filter-item">
             <label for="price">Price</label><br>
-            <input type="number" id="price" name="price"><br>
+            <input type="text" id="price" name="price"><br>
           </div>
   
           <div class="filter-item">
@@ -143,10 +150,22 @@
       <label for="photos">Photos</label><br>
       <input type="file" id="photos" name="photos" multiple accept=".jpg,.png">
       <br><br>
-      <input id="postCar" value="Submit">
+      <input type="button" id="postCar" value="Submit">
     </form> 
   </div>
-  
+  <script>
+    function sold(id) {
+
+      console.log(id);
+      $.ajax({
+      method: 'POST',
+      url: `/api/cars/${id}`
+    })
+    .done((response) => {
+      console.log(response);
+    });
+    }
+  </script>
 </body>
 <%- include('partials/_footer')-%>
 </html>

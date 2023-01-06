@@ -6,6 +6,7 @@ const { saveToDatabase } = require('../db/queries/insertCar')
 const app = express()
 const bodyParser = require('body-parser');
 const { response } = require('express');
+const { markedSold } = require('../db/queries/markAsSold');
 
 app.use('/api/userLikes', userLikes)
 app.use('/api/userCars', userCars)
@@ -15,31 +16,22 @@ app.use(bodyParser.json())
 router.get('/', async(req, res) => {
   const likedCars = await userLikes();
   const ownerCars = await userCars();
-  // console.log("likedCars", likedCars);
-  // console.log("ownerCars", ownerCars);
   res.render('dashboard', { likedCars, ownerCars, userEmail: req.cookies.userEmail});
 }); 
 
-router.post('/api/cars', async(req, res) => {
-  console.log(req.body)
-  saveToDatabase(req.body.make, req.body.model, req.body.yr, req.body.price, req.body.color, req.body.thumbnail_img, req.body.fullsize_img).then(() => {
-    res.json({ status: "success" })
-  });
-  //body pars
-  // console.log('----------------------------------------------------------------')
-  // console.log('---------------------------------------------------------------')
-  // res.redirect('/dashboard', dataSaved)
+router.post('/api/cars/:id', async(req, res) => {
+  console.log("MarkSold", req.params.id)
+  markedSold(req.params.id)
 })
 
-// router.get('/dashboard', function(req, res) {
-//   if (!req.cookies.sessionId) {
-//     // If the cookie is not present, redirect the user to the login page
-//     res.redirect('/');
-//   } else {
-//     // If the cookie is present, render the dashboard page as usual
-//     res.render('dashboard', { likedCars: likedCars, ownerCars: ownerCars });
-//   }
-// });
+router.post('/api/cars', async(req, res) => {
+  console.log(req.body)
+  saveToDatabase(req.body.make, req.body.model, req.body.yr, req.body.color, req.body.price, 1, req.body.thumbnail_img, req.body.fullsize_img).then(() => {
+    res.json({ status: "success" })
+  });
+})
+
+
 
 
 module.exports = router;

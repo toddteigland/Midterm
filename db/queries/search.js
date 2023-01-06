@@ -62,7 +62,6 @@ const getVehicles = function() {
 
   return db.query(queryString, queryParams)
   .then((response) => {
-    console.log('RESPONSE.ROWS: ', response.rows)
     return response.rows
   });
 };
