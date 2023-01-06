@@ -1,53 +1,192 @@
 main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-top: 0;
-    width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient( rgb(223, 234, 243), whitesmoke);
-    font-family: 'Montserrat', sans-serif;
+  
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin-top: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-image: linear-gradient( rgb(0, 0, 0), whitesmoke);
+  font-family: 'Montserrat', sans-serif;
 }
-.liked-cars{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-.liked-cars h2{
-    flex: 1 1 90%;
-}
+//////////////////
+
 #liked-list{
-    flex: 1 1 90%;
+  padding-left:2rem ;
+  padding-right: 2rem;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 4rem;
+  
+}
 
+.likedCar{
+  list-style-type: none;
+  flex: 0 1 30%;
+  height: 21rem;
+  padding:  0.3rem 1.5rem 0.3rem 1.5rem;
+  background-color:  aliceblue;
+  border-radius: 2rem;
+  line-height: 1.5rem;
+  font-weight: bolder;
+  margin-bottom: 3rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.likedCar a{
+  color: rgb(31, 66, 48);
+}
+.car-detail1{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.car-img{
+  flex: 1 1 35%;
+  border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  
+}
+.car-info{
+  flex: 1 1 60%;
+  display: flex;
+  flex-direction: column;
+  padding-left:1rem;
+  font-size: 1.4rem;
+  line-height: 0.7rem;
 
 }
-#listed-cars{
+.contact-p{
+  margin: 0;
+  
+
+}
+.car-detail2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+.like{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.likeButton{
+  border: none;
+  color: red;
+  background-color:transparent;
+}
+.likeButton:hover{
+  border: none;
+  background-color: #99edced3;
+  border-radius: 50%;
+}
+.liked{
+  border: #8EC3B0;
+  color: #028455;
+  
+}
+
+
+
+
+/// //////////////
+#liked-cars{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-bottom: 2rem;
 }
-#listed-cars h2{
-    flex: 1 1 90%;
-}
-.listed-cars{
-    flex: 1 1 90%;
+.liked-h2{
 
+  padding-top: 9rem;
+    // flex: 1 1 90%;
+    color: #8EC3B0;
+    font-size: 2rem;
+
+}
+// #liked-list{
+//   // flex: 1 1 100%;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-wrap: wrap;
+//   background-color: #DEF5E5;
+// }
+// .likedCar{
+//   background-color:aliceblue;
+//   padding: 1rem;
+//   margin: 0.5rem;
+// }
+
+#listed-cars{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.listed-h2{
+  padding-top: 9rem;
+  color: #447160;
+  font-size: 2rem;
+}
+.car-list-card{
+  padding-left:2rem ;
+  padding-right: 2rem;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-bottom: 4rem;
+}
+.ownerCar{
+  list-style-type: none;
+  flex: 0 1 50%;
+  height: 24rem;
+  padding:  0.3rem 1.5rem 0.3rem 1.5rem;
+  background-color:  aliceblue;
+  border-radius: 2rem;
+  line-height: 1.5rem;
+  font-weight: bolder;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  display: flex;
+  flex-direction: column;
+}
+.car-img2{
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  
 }
 
 // form 
 .form-container{
     display: flex;
-    width: 60%;
+    flex:1 1 35%;
     justify-content: center;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+
 }
 
 #new-posting{
+  
     padding: 2rem;
     background-color: aliceblue;
     display: flex;
@@ -92,19 +231,54 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 3rem;
+    padding: 0.5rem;
+    color: #429174;
+    background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 60%;
+    font-size: 1.2rem;
+
+    height: 5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  #button:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+    padding: 0.5rem;
+    color: #429174;
+    background-image:radial-gradient(#def5f4, #8eb8c3) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 60%;
+    height: 5rem;
+    font-size: 1.2rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  
+  }
+  .button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #search-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 2rem;
     padding: 1.5rem;
     color: #429174;
     background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
     border-radius: 0.5rem;
     border: none;
-    width: 100%;
-    font-size: 1.2rem;
-
+    width: 50%;
     height: 4rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   }
-  #button:hover{
+  #search-button:hover{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -114,14 +288,68 @@ main{
     background-image:radial-gradient(#def5f4, #8eb8c3) ;
     border-radius: 0.5rem;
     border: none;
-    width: 100%;
+    width: 50%;
     height: 4rem;
-    font-size: 1.2rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   
   }
-  .button-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media (max-width: 480px){
+    main{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+    }
+    .footer-container{
+      margin-top: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+    }
+    .footer-list{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+  
+    }
+    .car-info{
+      font-size: 1rem;
+      line-height: 0.7rem;
+    
+    }
+    .car-list-card{
+      padding:0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    #likedList{
+      padding:0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: center;
+      align-items: center;
+      
+    }
+    .header-container{
+      display: flex;
+      flex-direction: column;
+  
+    }
+    .nav-list{
+      display: flex;
+      flex-direction: column;
+      color: #BCEAD5;
+      font-size: 1rem;
+    }
   }

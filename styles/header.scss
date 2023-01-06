@@ -61,3 +61,17 @@ a:active {
   color:#BCEAD5;
 
 }
+@media (max-width: 480px){
+  .header-container{
+    display: flex;
+    flex-direction: column;
+
+  }
+  .nav-list{
+    display: flex;
+    flex-direction: column;
+    color: #BCEAD5;
+    font-size: 1rem;
+  }
+
+}

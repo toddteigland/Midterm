@@ -23,40 +23,65 @@
 <%- include('partials/_header')-%>
 <body>
   <main>
+    <div class="1"></div>
+    <div class="2"></div>
+    <div class="3"></div>
 
   <!-- Liked Cars -->
   <div id="liked-cars">
-    <h2>Liked Vehicles</h2>
+    <div class="liked-h2">
+      <h2>Liked Vehicles</h2>
+    </div>
     <div id="liked-list">
       <% for(let likedCar of likedCars) { %>
         <div class="likedCar">
-          <h3><%= likedCar.make %> <%= likedCar.model %></h3>
-          <p>Year: <%= likedCar.yr %></p>
-          <p>Price: $<%= likedCar.price %></p>
-          <div id="${vehicle.id}" class="like">
-            <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
-          <p>Likes: <%= likedCar.likes %></p>
+          <div class="car-detail1">
+            <div >
+              <img class="car-img" src="<%= likedCar.thumbnail_img %>" alt="<%= likedCar.make %> <%= likedCar.model %>" width="200" height="150">
+            </div>
+            <div class="car-info">
+              <h4><%= likedCar.make %> <br><br><br><%= likedCar.model %></h4>
+              <p>Year:<br><br><br> <%= likedCar.yr %></p>
+            </div>
           </div>
-          <img src="<%= likedCar.thumbnail_img %>" alt="<%= likedCar.make %> <%= likedCar.model %>" width="200" height="150">
-          <p>Contact Owner: <a href="mailto: <%= likedCar.email %>"><%= likedCar.email %></a></p>
+          <div class="contact-p">
+            <p>Contact Owner:<br> <a href="mailto: <%= likedCar.email %>"><%= likedCar.email %></a></p>
+          </div>
+          <div class="car-detail2">
+            <p>Price: $<%= likedCar.price %></p>
+            <div id="${vehicle.id}" class="like">
+              <p>Likes: <%= likedCar.likes %></p>
+              <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
+            </div>
+          </div>  
         </div>
         <% } %>
     </div>
-      <!-- END OF LIEKD CARS -->
-      <!-- Listed Cars -->
-    <div id="listed-cars">
-      <h2>My Listed Cars</h2>
-      <div id="listed-cars"></div>
-    </div>
+  </div>
 
+    <!-- END OF LIEKD CARS -->
+    <!-- Listed Cars -->
+  <div id="listed-cars">
+
+    <div class="listed-h2">
+      <h2>My Listed Cars</h2>
+    </div>
+    <div class="car-list-card">
       <% for(let ownerCar of ownerCars) { %>
         <div class="ownerCar">
-          <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
-          <p>Year: <%= ownerCar.yr %></p>
-          <p>Price: $<%= ownerCar.price %>
-            <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>')" id="<%= ownerCar.id %>">Mark as Sold</button></p>
-          <p>Color: <%= ownerCar.color %></p>
-          <p><img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150"></p>
+          <div class="car-detail1">
+            <img class="car-img2" src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150">
+          </div>
+          <div class="contact-p">
+            <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
+            <p>Color: <%= ownerCar.color %></p>
+          </div>
+          <div class="car-detail2">
+
+            <p>Price: $<%= ownerCar.price %>
+              <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>')" id="<%= ownerCar.id %>">Mark as Sold</button></p>
+            <p>Year: <%= ownerCar.yr %></p>
+          </div>
         </div>
         <% } %>
     </div>
@@ -72,8 +97,6 @@
             <label for="make">Make</label><br>
             <input type="text" id="make" name="make"><br>
           </div>
-    </div>
-  </div>
 
           <div class="filter-item">
             <label for="model">Model</label><br>
@@ -96,13 +119,16 @@
           </div>
 
           <!-- Add photos for submission -->
-      <label for="photos">Photos</label><br>
-      <input type="file" id="photos" name="photos" multiple accept=".jpg,.png">
-      <br><br>
-      <input type="button" id="postCar" value="Submit">
-    </form> 
+          <label for="photos">Photos</label><br>
+          <input type="file" id="photos" name="photos" multiple accept=".jpg,.png">
+          <br><br>
+          <input id="search-button" type="button" id="postCar" value="Submit">
+        </form> 
+      </div>
+      </section>
+      
     <!-- End of NEW Posting -->
-  </div>
+ 
   <script>
     function sold(id) {
 
@@ -116,6 +142,5 @@
     });
     }
   </script>
-</body>
+
 <%- include('partials/_footer')-%>
-</html>
