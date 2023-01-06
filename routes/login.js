@@ -7,4 +7,10 @@ router.post('/', (req, res) => {
   res.json({userEmail: email})
 });
 
+router.get('/', (req, res) => {
+  //check if users logged in
+  console.log("HELLO");
+  res.json({email: req.cookies.userEmail})
+})
+
 module.exports = router;

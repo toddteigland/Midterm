@@ -1,5 +1,11 @@
 let user = '';
 $(document).ready(function(e) {
+$.get('/login')
+  .then ((data)=> {
+    user = data.email;
+    displayNav();
+  })
+
 
   //make function displaynav, call it
   const displayNav = function() {
@@ -8,7 +14,7 @@ $(document).ready(function(e) {
       $('.logoutForm').show();
       $('.dashboard-nav').show();
       $('.likeButton').attr('disabled',false);
-
+      $('.loginForm').hide();
       // 
     } else {
       $('.logoutForm').hide();
@@ -34,6 +40,8 @@ $(document).ready(function(e) {
     event.preventDefault();
     $.post('/logout')
       .then((res) => {
+        user = res.userEmail;
+        displayNav();
       });
   });
 
