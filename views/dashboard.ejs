@@ -160,7 +160,7 @@
                   <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>');window.location.reload()" id="<%= ownerCar.id %>">Mark as
                     Sold</button>
                    <% } else { %>
-                    <p>Price: SOLD!</p>
+                    <p class="sold">Price: SOLD!</p>
                     <% }; %>
                   <button class="delete-bttn" onclick="deleteVehicle(11)" id="<%= ownerCar.id %>">DeleteListing</button>
                 </div>
