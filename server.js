@@ -42,7 +42,7 @@ const userLogin = require('./routes/login');
 const loginApiRoutes = require('./routes/login-api');
 const logoutRoutes = require('./routes/logout');
 const vehicleRoutes = require('./routes/vehicle');
-const { markedSold } = require('./db/queries/markAsSold');
+const { markedSold, deleteVehicle } = require('./db/queries/markAsSold');
 
 
 // Mount all resource routes
@@ -82,6 +82,12 @@ app.get('/', (req, res) => {
 app.post('/api/cars/:id', async(req, res) => {
   console.log("MarkSold", req.params.id)
   markedSold(req.params.id)
+})
+
+app.post('/api/delete/:id', async(req, res) => {
+  console.log("deleteVehicle", req.params.id)
+  deleteVehicle(req.params.id)
+  res.redirect('/dashboard');
 })
 
 app.listen(PORT, () => {
