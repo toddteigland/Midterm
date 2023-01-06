@@ -14,10 +14,14 @@ app.use('/api/insertCar', saveToDatabase)
 app.use(bodyParser.json())
 
 router.get('/', async(req, res) => {
-  const likedCars = await userLikes();
-  const ownerCars = await userCars();
-  res.render('dashboard', { likedCars, ownerCars, userEmail: req.cookies.userEmail});
-}); 
+  if(!req.cookies.userEmail) {
+    res.send("Please login to view your dashboard.")
+  } else {
+    const likedCars = await userLikes();
+    const ownerCars = await userCars();
+    res.render('dashboard', { likedCars, ownerCars, userEmail: req.cookies.userEmail});
+  }
+});
 
 // router.post('/api/cars/:id', async(req, res) => {
 //   console.log("MarkSold", req.params.id)
