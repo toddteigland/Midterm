@@ -2,7 +2,13 @@ const db = require('../connection');
 
 const userLikes = () => {
   return db.query(
-    'SELECT * FROM vehicles JOIN likes ON vehicles.id = likes.vehicle_id WHERE likes.user_id = 1')
+    `SELECT count(likes.vehicle_id) as likes, vehicles.id as id, vehicles.thumbnail_img as thumbnail_img, users.email as email,
+    vehicles.yr, vehicles.make, vehicles.model, vehicles.price
+    FROM likes 
+    JOIN vehicles ON likes.vehicle_id = vehicles.id
+    JOIN users ON vehicles.owner_id = users.id
+    GROUP BY likes.vehicle_id, vehicles.id, vehicles.thumbnail_img, users.email, vehicles.yr, vehicles.make
+    , vehicles.model, vehicles.price;`)
     .then(data => {
       console.log("data", data)
       return data.rows;

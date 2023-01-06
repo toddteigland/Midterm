@@ -8,5 +8,6 @@ CREATE TABLE vehicles (
   color VARCHAR(20) NOT NULL,
   price INT NOT NULL,
   thumbnail_img VARCHAR(255) NOT NULL, 
-  fullsize_img VARCHAR(255) NOT NULL
+  fullsize_img VARCHAR(255) NOT NULL,
+  sold BOOLEAN DEFAULT false;
 );

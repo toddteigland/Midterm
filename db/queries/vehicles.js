@@ -67,15 +67,16 @@ const filterVehicles = (options) => {
   } else if (options.sort === 'likes') {
     queryString += ` ORDER BY likes DESC`;
   }
-
+  
   queryString += `
   LIMIT 10;
   `;
-
+  
+  console.log("filterVehiclesQuery:", queryString)
   return db.query(queryString, queryParams)
-    .then((response) => {
-      return response.rows;
-    });
+  .then((response) => {
+    return response.rows;
+  });
 };
 
 

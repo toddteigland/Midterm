@@ -1,25 +1,15 @@
 const db = require('../connection');
 
-const saveToDatabase = (make, model, yr, price, color, thumbnail_img, fullsize_img) => {
-  // create an object to hold the form data
-  const vehicleData = {
-    owner_id: 1,
-    make: make,
-    model: model,
-    yr: yr,
-    color: color,
-    price: price,
-    likes: 0, 
-    thumbnail_img: thumbnail_img,
-    fullsize_img: fullsize_img,
-  };
-
+const saveToDatabase = (make, model, yr, color, price, thumbnail_img, fullsize_img) => {
   // inserted into the vehicle table
-  const query = `INSERT INTO vehicles (owner_id, make, model, yr, color, price, likes, thumbnail_img, fullsize_img) VALUES ('${vehicleData.owner_id}', '${vehicleData.make}', '${vehicleData.model}', '${vehicleData.yr}', '${vehicleData.color}', '${vehicleData.price}', '${vehicleData.likes}', '${vehicleData.thumbnail_img}', '${vehicleData.fullsize_img}')`;
-  return db.query(query)
+  const query = `INSERT INTO vehicles (make, model, yr, color, price, thumbnail_img, fullsize_img) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+  return db.query(query, [make, model, yr, color, price, thumbnail_img, fullsize_img])
     .then(response => {
       console.log("Vehicle saved to database");
-    });
+    })
+    .catch(err => {
+      console.log(err.message)
+    })
 };
 
 module.exports = { saveToDatabase }
