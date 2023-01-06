@@ -69,11 +69,13 @@ $.get('/login')
     <div class="car-detail1">
       <img class="car-img" src="${vehicle.thumbnail_img}" width="100px" height="100px"/>
       <div class="car-info">
-        <p> ${vehicle.make} <b>${vehicle.model}</b></p>
+        <p> ${vehicle.make}<br><br> <b>${vehicle.model}</b></p>
         <p> ${vehicle.yr} </p>
       </div>
     </div>
-    <p>Contact Owner: <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
+    <div class="contact-p">
+      <p>Contact Owner:<br> <a href="mailto: ${vehicle.email}">${vehicle.email}</a></p>
+    </div>
     <div class="car-detail2">
       <p> $${vehicle.price} </p>
       <div id="${vehicle.id}" class="like">
