@@ -28,37 +28,29 @@ app.use(
 );
 app.use(express.static('public'));
 app.use(cookieParser())
-//gary and ilia
+
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const widgetApiRoutes = require('./routes/widgets-api');
-const userApiRoutes = require('./routes/users-api');
+
 const vehicleApiRoutes = require('./routes/vehicle-api');
 const indexApiRoutes = require('./routes/index-api')
-const usersRoutes = require('./routes/users');
 const userDashboard = require('./routes/dashboard')
-const userLikesApiRoutes = require('./routes/likedCars-api');
 const userLogin = require('./routes/login');
-const loginApiRoutes = require('./routes/login-api');
 const logoutRoutes = require('./routes/logout');
-const vehicleRoutes = require('./routes/vehicle');
-const { markedSold, deleteVehicle } = require('./db/queries/markAsSold');
-
+const carsRoutes = require('./routes/cars');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-app.use('/', loginApiRoutes);
+
 app.use('/login', userLogin);
 app.use('/logout', logoutRoutes);
-app.use('/api/users', userApiRoutes);
-app.use('/api/widgets', widgetApiRoutes);
+app.use('/dashboard', userDashboard);
+
 app.use('/api/vehicles', vehicleApiRoutes);
 app.use('/api/index', indexApiRoutes);
-app.use('/users', usersRoutes);
-app.use('/dashboard', userDashboard);
-app.use('/api/likedCars', userLikesApiRoutes);
-app.use('/vehicle', vehicleRoutes);
+app.use('/api/dashboard', userDashboard);
+app.use('/api/cars', carsRoutes);
 
 
 // Note: mount other resources here, using the same pattern above
@@ -78,17 +70,6 @@ app.get('/', (req, res) => {
   }
   res.render('index', templateVars);  // pass the templateVars object to the view
 });
-
-app.post('/api/cars/:id', async(req, res) => {
-  console.log("MarkSold", req.params.id)
-  markedSold(req.params.id)
-})
-
-app.post('/api/delete/:id', async(req, res) => {
-  console.log("deleteVehicle", req.params.id)
-  deleteVehicle(req.params.id)
-  res.redirect('/dashboard');
-})
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

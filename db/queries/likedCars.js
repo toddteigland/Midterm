@@ -1,5 +1,6 @@
 const db = require('../connection');
 
+// Lists vehicles in dashboard liked by logged in user
 const userLikes = () => {
   return db.query(
     `SELECT count(likes.vehicle_id) as likes, vehicles.id as id, vehicles.thumbnail_img as thumbnail_img, users.email as email,

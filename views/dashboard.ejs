@@ -18,86 +18,10 @@
 
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/index.js"></script>
+  <script defer src="/scripts/dashboard.js"></script>
 </head>
 
 <%- include('partials/_header')-%>
-<!-- <body>
-  <main>
-    <div class="1"></div>
-    <div class="2"></div>
-    <div class="3"></div> -->
-
-  <!-- Liked Cars -->
-  <!-- <div id="liked-cars">
-    <div class="liked-h2">
-      <h2>Liked Vehicles</h2>
-    </div>
-    <div id="liked-list">
-      <% for(let likedCar of likedCars) { %>
-        <div class="likedCar">
-          <div class="car-detail1">
-            <div >
-              <img class="car-img" src="<%= likedCar.thumbnail_img %>" alt="<%= likedCar.make %> <%= likedCar.model %>" width="200" height="150">
-            </div>
-            <div class="car-info">
-              <h4><%= likedCar.make %> <br><br><br><%= likedCar.model %></h4>
-              <p>Year:<br><br><br> <%= likedCar.yr %></p>
-            </div>
-          </div>
-          <div class="contact-p">
-            <p>Contact Owner:<br> <a href="mailto: <%= likedCar.email %>"><%= likedCar.email %></a></p>
-          </div>
-          <div class="car-detail2">
-            <p>Price: $<%= likedCar.price %></p>
-            <div id="${vehicle.id}" class="like">
-              <p>Likes: <%= likedCar.likes %></p>
-              <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
-            </div>
-          </div>  
-        </div>
-        <% } %>
-    </div>
-  </div> -->
-
-    <!-- END OF LIEKD CARS -->
-    <!-- Listed Cars -->
- <!--<div id="listed-cars">
-
-    <div class="listed-h2">
-      <h2>My Listed Cars</h2>
-    </div>
-    <div class="car-list-card">
-      <% for(let ownerCar of ownerCars) { %>
-        <div class="ownerCar">
-          <div class="car-detail1">
-            <img class="car-img2" src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200" height="150">
-          </div>
-          <div class="contact-p">
-            <h3><%= ownerCar.make %> <%= ownerCar.model %></h3>
-            <p>Color: <%= ownerCar.color %></p>
-          </div>
-          <div class="car-detail2">
-
-            <p>Price: $<%= ownerCar.price %>
-              <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>')" id="<%= ownerCar.id %>">Mark as Sold</button></p>
-            <p>Year: <%= ownerCar.yr %></p>
-          </div>
-        </div>
-        <% } %>
-    </div>
-  </div> -->
-    <!-- END OF LISTED CARS -->
-      <!-- NEW Posting -->
-   <!-- <section class="form-container">
-      <div id="new-posting">
-        <h2>Post your car!</h2>
-        <form id="new-posting-form">
-  
-          <div class="filter-item">
-            <label for="make">Make</label><br>
-            <input type="text" id="make" name="make"><br>
-          </div> -->
 
   <body>
     <main>
@@ -115,59 +39,76 @@
             <div class="likedCar">
               <div class="car-detail1">
                 <div>
-                  <img class="car-img" src="<%= likedCar.thumbnail_img %>" alt="<%= likedCar.make %> <%= likedCar.model %>" width="200"
-                    height="150">
+                  <img class="car-img" src="<%= likedCar.thumbnail_img %>"
+                    alt="<%= likedCar.make %> <%= likedCar.model %>" width="200" height="150">
+                </div>
+                <div class="car-info">
+                  <h4>
+                    <%= likedCar.make %>
+                      <%= likedCar.model %>
+                  </h4>
+                  <p>Year:<br><br><br>
+                    <%= likedCar.yr %>
+                  </p>
+                </div>
               </div>
-              <div class="car-info">
-                <h4><%= likedCar.make %><%= likedCar.model %></h4>
-                <p>Year:<br><br><br> <%= likedCar.yr %></p>
+              <div class="contact-p">
+                <p>Contact Owner: <a href="mailto: <%= likedCar.email %>">
+                    <%= likedCar.email %>
+                  </a></p>
+              </div>
+              <div class="car-detail2">
+                <p>Price: $<%= likedCar.price %>
+                </p>
+                <div id="${vehicle.id}" class="like">
+                  <p>Likes: <%= likedCar.likes %>
+                  </p>
+                  <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                </div>
               </div>
             </div>
-            <div class="contact-p">
-              <p>Contact Owner: <a href="mailto: <%= likedCar.email %>"><%= likedCar.email %></a></p>
-            </div>
-            <div class="car-detail2">
-              <p>Price: $<%= likedCar.price %></p>
-              <div id="${vehicle.id}" class="like">
-                <p>Likes: <%= likedCar.likes %></p>
-                <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
-              </div>
-            </div>
-          </div>
             <% } %>
         </div>
       </div>
-        <!-- END OF LIKED CARS -->
-        <!-- Listed Cars -->
-        <div id="listed-cars">
-          <div class="listed-h2">
-            <h2>My Listed Cars</h2>
-          </div>
-          <div class="car-list-card">
-            <% for(let ownerCar of ownerCars) { %>
+      <!-- END OF LIKED CARS -->
+
+      <!-- Listed Cars -->
+      <div id="listed-cars">
+        <div class="listed-h2">
+          <h2>My Listed Cars</h2>
+        </div>
+        <div class="car-list-card">
+          <% for(let ownerCar of ownerCars) { %>
             <div class="ownerCar">
               <div class="car-detail1">
-                <img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>"
-                width="200" height="150">
+                <img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200"
+                  height="150">
               </div>
               <div class="contact-p">
-                <h3><%= ownerCar.make %><%= ownerCar.model %></h3>
+                <h3>
+                  <%= ownerCar.make %>
+                    <%= ownerCar.model %>
+                </h3>
               </div>
               <div class="car-detail2">
-                  <p>Year: <%= ownerCar.yr %></p>
-                  <% if (!ownerCar.sold) { %>
-                  <p>Price: $<%= ownerCar.price %></p>
-                  <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>');window.location.reload()" id="<%= ownerCar.id %>">Mark as
+                <p>Year: <%= ownerCar.yr %>
+                </p>
+                <% if (!ownerCar.sold) { %>
+                  <p>Price: $<%= ownerCar.price %>
+                  </p>
+                  <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>');window.location.reload()"
+                    id="<%= ownerCar.id %>">Mark as
                     Sold</button>
-                   <% } else { %>
+                  <% } else { %>
                     <p class="sold">Price: SOLD!</p>
                     <% }; %>
-                  <button class="delete-bttn" onclick="deleteVehicle(11)" id="<%= ownerCar.id %>">DeleteListing</button>
-                </div>
+                      <button class="delete-bttn" onclick="deleteVehicle(11)"
+                        id="<%= ownerCar.id %>">DeleteListing</button>
               </div>
-                  <% } %>
             </div>
-          </div>
+            <% } %>
+        </div>
+      </div>
       <!-- END OF LISTED CARS -->
       <!-- NEW Posting -->
       <section class="form-container">
@@ -209,30 +150,8 @@
           <!-- End of NEW Posting -->
         </div>
       </section>
-      <script>
-
-        function sold(id) {
-          $.ajax({
-            method: 'POST',
-            url: `/api/cars/${id}`
-          })
-            .done((response) => {
-              console.log('VEHICLE SOLD');
-            });
-        };
-
-        function deleteVehicle(id) {
-          $.ajax({
-            method: 'POST',
-            url: `/api/delete/${id}`
-          })
-            .done((response) => {
-              console.log('VEHICLE DELETED');
-            });
-        };
-      </script>
   </body>
-</main>
-<%- include('partials/_footer')-%>
+  </main>
+  <%- include('partials/_footer')-%>
 
 </html>

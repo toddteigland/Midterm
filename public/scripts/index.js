@@ -7,7 +7,7 @@ $.get('/login')
   })
 
 
-  //make function displaynav, call it
+  //Determines based on logged in/out status what to show in header
   const displayNav = function() {
     if (user) {
       $('.userEmail').text(user);
@@ -26,6 +26,7 @@ $.get('/login')
   };
   displayNav();
 
+  // On login adds user email to user variable
   $('.loginForm').on('submit', function(event) {
     event.preventDefault();
     const data = $(this).serialize();
@@ -36,6 +37,7 @@ $.get('/login')
       });
   });
 
+  // On logout removes user email from user variable
   $('.logoutForm').on('submit', function(event) {
     event.preventDefault();
     $.post('/logout')
@@ -45,6 +47,7 @@ $.get('/login')
       });
   });
 
+  // Load response vehicles into vehicle cards for index page
   const loadVehicles = () => {
     $.ajax({
       method: 'GET',
@@ -87,12 +90,8 @@ $.get('/login')
     return vehicleElement;
   };
 
-
-  // const userEmail = req.cookies.userEmail;
-
+// Adds a like to the like table when logged in user likes a vehicle
   $(".result").on("click", ".likeButton", function(e) {
-    //   //e.preventDefault();
-    console.log('CLICKED!!!!!');
     if(!user) {
       return
     }
@@ -118,25 +117,10 @@ $.get('/login')
     }
   });
 
-  // } else { //You are not logged in and we give user a message
-  //   alert("Please log in before liking vehicles");
-  // }
-  //   });
-
-
-
-
-
-  // This is handling the like button clicks
-  // setTimeout(() => {
-  //   $('.likeButton').each(function() {
-
-  // }, 1000);
-
+  //when filter form submits returns list of vehicles from query
   const $filterForm = $('#filter-form');
   $filterForm.on('submit', (event) => {
     event.preventDefault();
-    console.log($filterForm.serialize());
     $.ajax({
       method: 'POST',
       url: '/api/vehicles/filter',
@@ -146,22 +130,5 @@ $.get('/login')
         renderVehicles(response.vehicles);
       });
   });
-  $("#postCar").click(function(){
-    $.post("/dashboard/api/cars",
-    {
-      owner_id: 1,
-      make: $("#make").val(),
-      model:  $("#model").val(),
-      yr:  $("#yr").val(),
-      price:  $("#price").val(),
-      color:  $("#color").val(),
-      thumbnail_img:  $("#photos").val(),
-      fullsize_img: $("#photos").val(),
-    },
-    function(data, status){
-      location.reload();
-    });
-  })
-
 });
 

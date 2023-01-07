@@ -1,18 +1,23 @@
 const { query } = require('express');
 const db = require('../connection');
 
+// Query for filter on home page
 const filterVehicles = (options) => {
+
   const queryParams = [];
+
   queryString = `
   SELECT count(likes.vehicle_id) as likes, vehicles.id as vehicleid, vehicles.thumbnail_img as thumbnail_img, users.email as email,
   vehicles.yr, vehicles.make, vehicles.model, vehicles.price
   FROM likes 
   JOIN vehicles ON likes.vehicle_id = vehicles.id
   JOIN users ON vehicles.owner_id = users.id`;
+
   if (options.make) {
     queryParams.push(options.make);
     queryString += ` WHERE make ILIKE $${queryParams.length}`;
   };
+
   if (options.model) {
     queryParams.push(options.model);
     if (queryParams.length === 1) {
@@ -21,6 +26,7 @@ const filterVehicles = (options) => {
       queryString += ` AND model ILIKE $${queryParams.length}`;
     }
   };
+
   if (options.minPrice) {
     queryParams.push(options.minPrice);
     if (queryParams.length === 1) {
@@ -29,6 +35,7 @@ const filterVehicles = (options) => {
       queryString += ` AND price >= $${queryParams.length}`;
     }
   };
+
   if (options.maxPrice) {
     queryParams.push(options.maxPrice);
     if (queryParams.length === 1) {
@@ -37,6 +44,7 @@ const filterVehicles = (options) => {
       queryString += ` AND price <= $${queryParams.length}`;
     }
   };
+
   if (options.minYr) {
     queryParams.push(options.minYr);
     if (queryParams.length === 1) {
@@ -45,6 +53,7 @@ const filterVehicles = (options) => {
       queryString += ` AND yr >= $${queryParams.length}`;
     }
   };
+
   if (options.maxYr) {
     queryParams.push(options.maxYr);
     if (queryParams.length === 1) {
@@ -53,6 +62,7 @@ const filterVehicles = (options) => {
       queryString += ` AND yr <= $${queryParams.length}`;
     }
   };
+
   queryString += `
   GROUP BY likes.vehicle_id, vehicles.id, vehicles.thumbnail_img, users.email, vehicles.yr, vehicles.make
   , vehicles.model, vehicles.price`;
@@ -72,15 +82,14 @@ const filterVehicles = (options) => {
   LIMIT 10;
   `;
   
-  console.log("filterVehiclesQuery:", queryString)
   return db.query(queryString, queryParams)
   .then((response) => {
     return response.rows;
   });
 };
 
-
 const addLikes = (user_id, vehicle_id) => {
+  console.log('GOT TO ADD LIKES FUNCTION!!!!!!');
   const queryString = ` 
   INSERT INTO likes (user_id, vehicle_id)
   VALUES ($1, $2) 
@@ -91,6 +100,7 @@ const addLikes = (user_id, vehicle_id) => {
       return response.rows;
     });
 };
+
 
 const removeLikes = (user_id, vehicle_id) => {
   const queryString = `

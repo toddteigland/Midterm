@@ -1,5 +1,6 @@
 const db = require('../connection');
 
+// load featured vehicles on homepage load
 const getMostLiked = () => {
   return db.query(
     `SELECT count(likes.vehicle_id) as likes, vehicles.id as id, vehicles.thumbnail_img as thumbnail_img, users.email as email,
