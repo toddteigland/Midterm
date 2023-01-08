@@ -14,7 +14,7 @@ main{
 #liked-list{
   padding-left:2rem ;
   padding-right: 2rem;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -25,8 +25,8 @@ main{
 
 .likedCar{
   list-style-type: none;
-  flex: 0 1 30%;
-  height: 21rem;
+  height: 24rem;
+  width: 26rem;
   padding:  0.3rem 1.5rem 0.3rem 1.5rem;
   background-color:  aliceblue;
   border-radius: 2rem;
@@ -43,8 +43,11 @@ main{
 .car-detail1{
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
+}
+.car-detail1 h2{
+  padding-left: 2rem;
 }
 .car-img{
   flex: 1 1 35%;
@@ -68,9 +71,9 @@ main{
 }
 .car-detail2{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding-bottom: 0.5rem;
 }
 .like{
@@ -147,7 +150,7 @@ main{
 .car-list-card{
   padding-left:2rem ;
   padding-right: 2rem;
-  width: 95%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -156,8 +159,8 @@ main{
 }
 .ownerCar{
   list-style-type: none;
-  flex: 0 1 50%;
   height: 24rem;
+  width: 26rem;
   padding:  0.3rem 1.5rem 0.3rem 1.5rem;
   background-color:  aliceblue;
   border-radius: 2rem;
@@ -168,6 +171,7 @@ main{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   display: flex;
   flex-direction: column;
+ 
 }
 .car-img2{
   margin-top: 1rem;
@@ -188,7 +192,7 @@ main{
 }
 
 #new-posting{
-  
+    width: 26rem;
     padding: 2rem;
     background-color: aliceblue;
     display: flex;
@@ -266,6 +270,34 @@ main{
     justify-content: center;
     align-items: center;
   }
+  .delete-bttn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1.5rem;
+    color: #429174;
+    background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 50%;
+    height: 3rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  .delete-bttn:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1.5rem;
+    color: #429174;
+    background-image:radial-gradient(#def5f4, #8eb8c3) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 50%;
+    height: 3rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
   .search-button{
     display: flex;
     justify-content: center;
@@ -279,6 +311,7 @@ main{
     width: 50%;
     height: 4rem;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  
   }
   .search-button:hover{
     display: flex;

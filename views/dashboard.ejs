@@ -44,7 +44,8 @@
                 </div>
                 <div class="car-info">
                   <h4>
-                    <%= likedCar.make %>
+                    <%= likedCar.make %> 
+                    <br><br><br>
                       <%= likedCar.model %>
                   </h4>
                   <p>Year:<br><br><br>
@@ -81,14 +82,17 @@
           <% for(let ownerCar of ownerCars) { %>
             <div class="ownerCar">
               <div class="car-detail1">
-                <img src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200"
+                <img class="car-img2" src="<%= ownerCar.thumbnail_img %>" alt="<%= ownerCar.make %> <%= ownerCar.model %>" width="200"
                   height="150">
+                <h2>
+                  <%= ownerCar.make %>
+                  <br><br>
+                    <%= ownerCar.model %>
+                </h2>
+                
               </div>
               <div class="contact-p">
-                <h3>
-                  <%= ownerCar.make %>
-                    <%= ownerCar.model %>
-                </h3>
+                
               </div>
               <div class="car-detail2">
                 <p>Year: <%= ownerCar.yr %>
@@ -96,14 +100,14 @@
                 <% if (!ownerCar.sold) { %>
                   <p>Price: $<%= ownerCar.price %>
                   </p>
+                  
                   <button class="sold-bttn" onclick="sold('<%= ownerCar.id %>');window.location.reload()"
                     id="<%= ownerCar.id %>">Mark as
                     Sold</button>
                   <% } else { %>
                     <p class="sold">Price: SOLD!</p>
                     <% }; %>
-                      <button class="delete-bttn" onclick="deleteVehicle(11)"
-                        id="<%= ownerCar.id %>">DeleteListing</button>
+                    <button class="delete-bttn" onclick="deleteVehicle(11);window.location.reload()" id="<%= ownerCar.id %>">DeleteListing</button>
               </div>
             </div>
             <% } %>
