@@ -12,7 +12,7 @@ main{
 .description{
   
   width: 100%;
-  height: 30rem;
+  height: auto;
   padding-top: 2rem;
   background-color: black;
   color:#8EC3B0;
@@ -233,9 +233,17 @@ select{
   height: 3rem;
   font-size: 0.8rem;
 }
+#sort{
+  background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
+  border-radius: 0.5rem;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+
 @media (max-width: 480px){
 
   #vehicleList{
+    width: 25rem;
     padding:0;
     margin: 0;
     display: flex;
@@ -246,6 +254,7 @@ select{
     
   }
   #vehicleList li {
+    width: 22rem;
     flex: 1 1 100%;
     margin-bottom: 2rem;
     margin-top: 2rem;
@@ -320,5 +329,64 @@ select{
     font-size: 1rem;
     line-height: 0.7rem;
   
+  }
+  header{
+    margin-bottom: 10rem;
+  }
+  .header-container li a{
+    color: rgb(35, 35, 35);
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+  }
+  .userEmail{
+    color: rgb(35, 35, 35);
+    font-size: 1.3rem;
+    line-height: 1.5rem;
+
+  }
+
+  .nav-link{
+    padding: 0;
+    margin: 0;
+  }
+  .logoutForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #search-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    padding: 1rem;
+    color: #429174;
+    background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 60%;
+    height: 3rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  }
+  #search-button:hover{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem;
+    padding: 1.5rem;
+    color: #429174;
+    background-image:radial-gradient(#def5f4, #8eb8c3) ;
+    border-radius: 0.5rem;
+    border: none;
+    width: 100%;
+    height: 3rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  
+  }
+  #sort{
+    background-image:radial-gradient(#DEF5E5, #8EC3B0) ;
+    border-radius: 0.5rem;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
   }
 }
