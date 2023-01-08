@@ -61,6 +61,9 @@ main{
 .search{
   // margin: 0.5rem;
   flex:1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   
 }
 .filter-container{
@@ -105,8 +108,9 @@ main{
 
 #vehicleList li {
   list-style-type: none;
-  flex: 0 1 47%;
+  flex: 0 1 48%;
   padding: 3rem;
+  margin: 0.25rem;
   background-color:  aliceblue;
   border-radius: 2rem;
   line-height: 1.5rem;
@@ -263,7 +267,6 @@ select{
   .result-container{
     display: flex;
     flex-direction: column;
-    // flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
@@ -389,4 +392,118 @@ select{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
   }
+  .filter-item{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media (min-width: 688px) and (max-width: 1024px){
+  .header-container{
+    font-size: 1.1rem;
+  }
+  .logo-container{
+    display: none;
+  }
+  .text-des h2{
+    font-size: 2.5rem;
+  }
+  .footer-container{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+  .p-footer{
+    margin-top: 3rem;
+    margin-left: 0;
+  }
+  .footer-list{
+    padding: 0;
+  }
+  .footer-list li{
+    padding: 0;
+  }
+  .footer-list li a{
+    padding-left: 1rem;
+  }
+  .index{
+    display: flex;
+    flex-direction: row;
+  }
+  .search{
+    flex: 1 1 40%;
+  }
+  .result{
+    flex: 1 1 60%;
+  }
+  #vehicleList li {
+    flex: 1 1 100%;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+
+  }
+  .filter-item{
+    display: flex;
+    flex-direction: column;
+  }
+
+
+}
+@media (min-width: 480px) and (max-width: 688px){
+  .logo-container{
+    display: none;
+  } 
+  .text-des h2{
+    font-size: 1.7rem;
+  }  
+  .text-des p{
+    font-size: 1.5rem;
+  }  
+  .footer-container{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 0.5rem;
+
+  }
+  header{
+    height: 14rem;
+  }
+  .header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: auto;
+    
+  }
+  .nav-bar{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .nav-list{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+  .nav-item{
+    padding-right: 1rem;
+  }
+  .userEmail{
+    padding-right: 1rem;
+  }
+  #search-button{
+    margin-right: 0.5rem;
+    width: 70%;
+  }
+  .filter-item{
+    display: flex;
+    flex-direction: column;
+  }
+ 
 }
