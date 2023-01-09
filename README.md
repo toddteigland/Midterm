@@ -39,3 +39,8 @@ Kanuck Auto Sales is a full stack web application built with Node, Express and S
 - Clone this project locally.
 - Install all dependencies (using the `npm install` command).
 - Run the development web server using the `npm run local` command.
+
+
+### ***Contact Contributers***
+
+*[Ilia](https://github.com/iliacodes)* *[Ellie](https://github.com/Ellie-Aghajani)* *[Todd](https://github.com/toddteigland)*
