@@ -82,7 +82,7 @@ $.get('/login')
     <div class="car-detail2">
       <p> $${vehicle.price} </p>
       <div id="${vehicle.id}" class="like">
-        <button class="likeButton"><i class="fa fa-heart" aria-hidden="true"></i></button>
+        <button class="likeButton" onclick="window.location.reload()"><i class="fa fa-heart" aria-hidden="true"></i></button>
         <p>${vehicle.likes}</p>
       </div>
     </div>

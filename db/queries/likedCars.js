@@ -11,7 +11,6 @@ const userLikes = () => {
     GROUP BY likes.vehicle_id, vehicles.id, vehicles.thumbnail_img, users.email, vehicles.yr, vehicles.make
     , vehicles.model, vehicles.price;`)
     .then(data => {
-      console.log("data", data)
       return data.rows;
   });
 };
