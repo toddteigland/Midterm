@@ -60,7 +60,6 @@ app.use('/api/cars', carsRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  console.log(req.cookies.userEmail)
   let userEmail = "";
   if (req.cookies.userEmail) {
     userEmail = req.cookies.userEmail;
