@@ -89,7 +89,6 @@ const filterVehicles = (options) => {
 };
 
 const addLikes = (user_id, vehicle_id) => {
-  console.log('GOT TO ADD LIKES FUNCTION!!!!!!');
   const queryString = ` 
   INSERT INTO likes (user_id, vehicle_id)
   VALUES ($1, $2) 
